@@ -1,9 +1,1 @@
-# 🌸 SakuraLoveForever
-
-## 🚀 About Me
-- 💻 Learning coding
-- ⚙️ Interested in embedded systems & algorithms
-- 🌏 Based in Asia
-
-## 📊 GitHub Metrics
-![Metrics](https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/main/github-metrics.svg)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=SakuraLoveForever)](https://github.com/anuraghazra/github-readme-stats)
