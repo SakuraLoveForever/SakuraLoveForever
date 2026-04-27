@@ -1,21 +1,17 @@
-name: Metrics - Followers
+name: Star lists
+
 on:
-  schedule: [{cron: "0 0 * * *"}]  # 每天更新一次
-  workflow_dispatch:                # 允许手动触发
-  push: {branches: ["main"]}       # 代码推送时触发
+  workflow_dispatch:  # 先手动触发测试
 
 jobs:
-  github-metrics-followers:
+  metrics:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: Generate star list
+        uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.people.followers.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          filename: metrics.plugin.starlists.svg
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ 改用 GitHub 自带 token
           base: ""
-          plugin_people: yes
-          plugin_people_types: followers
-          # 可选：限制显示人数，默认24
-          # plugin_people_limit: 10
+          plugin_starlists: yes
+          plugin_starlists_limit: 2
