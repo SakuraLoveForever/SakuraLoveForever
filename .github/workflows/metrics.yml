@@ -1,35 +1,51 @@
 name: Metrics
 
 on:
-  schedule: [{ cron: "0 */6 * * *" }]
+  schedule:
+    - cron: "0 */6 * * *" # 每6小时更新一次
   workflow_dispatch:
 
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Generate metrics
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: SakuraLoveForever
 
+          # 基础模板
           template: classic
           base: header, activity, community, repositories
 
+          # 时区
           config_timezone: Asia/Taipei
 
+          # 插件：语言分布
           plugin_languages: yes
           plugin_languages_limit: 8
           plugin_languages_sections: most-used
           plugin_languages_indepth: yes
 
+          # 插件：贡献日历
           plugin_isocalendar: yes
 
+          # 插件：Stars趋势
           plugin_stars: yes
 
+          # 插件：流量
           plugin_traffic: yes
 
+          # 插件：关注者
           plugin_followup: yes
 
+          # 插件：代码行数
           plugin_lines: yes
+
+          # 插件：热门项目
+          plugin_top_repositories: yes
+          plugin_top_repositories_limit: 5
