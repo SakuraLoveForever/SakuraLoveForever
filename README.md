@@ -74,13 +74,15 @@
         <img src="metrics.plugin.isocalendar.svg" alt="Isometric Calendar">
       </td>
       <td align="center">
-        <img src="metrics.plugin.topics.icons.svg" alt="Starred topics">
+        <img src="metrics.plugin.calendar.full.svg" alt="Commit calendar">
       </td>
     </tr>
   </table>
 </div>
 
 <div>&nbsp;</div>
+
+
 
 <div align="center">
   <table>
