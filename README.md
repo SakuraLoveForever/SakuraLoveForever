@@ -4,3 +4,4 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SakuraLoveForever&layout=pie&theme=tokyonight&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
 [![trophy](https://github-profile-trophy.vercel.app/?username=SakuraLoveForever&theme=dracula)](https://github.com/ryo-ma/github-profile-trophy)
 ![GitHub Stats](https://stats-cards-hk5o.vercel.app/api/github?username=SakuraLoveForever&theme=tokyonight)
+![](https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg)
