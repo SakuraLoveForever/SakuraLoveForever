@@ -83,10 +83,14 @@
 <div>&nbsp;</div>
 
 <div align="center">
+  <img src="metrics.plugin.people.followers.svg" alt="Followers">
+</div>
+
+<div align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="metrics.plugin.people.followers.svg" alt="Followers">
+        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
       </td>
       <td align="center">
         <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
