@@ -6,6 +6,38 @@
 </div>
 
 <!--START_SECTION:waka-->
+![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
+
+**🐱 My GitHub Data** 
+
+> 📦 343.3 kB Used in GitHub's Storage 
+ > 
+> 🏆 118 Contributions in the Year 2026
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 8 Public Repositories 
+ > 
+> 🔑 0 Private Repositories 
+ > 
+**I Mostly Code in HTML** 
+
+```text
+HTML                     3 repos             ███████████░░░░░░░░░░░░░░   42.86 % 
+JavaScript               1 repo              ████░░░░░░░░░░░░░░░░░░░░░   14.29 % 
+Python                   1 repo              ████░░░░░░░░░░░░░░░░░░░░░   14.29 % 
+C#                       1 repo              ████░░░░░░░░░░░░░░░░░░░░░   14.29 % 
+Vue                      1 repo              ████░░░░░░░░░░░░░░░░░░░░░   14.29 % 
+```
+
+
+
+**Timeline**
+
+![Lines of Code chart](https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/main/assets/bar_graph.png)
+
+
+ Last Updated on 27/04/2026 16:34:38 UTC
 <!--END_SECTION:waka-->
 
 <!-- 空行分隔 -->
