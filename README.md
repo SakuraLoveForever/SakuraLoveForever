@@ -8,4 +8,4 @@
 ![](https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg)
 
 <!-- 如果你改成了全年日历，则引用对应的文件名 -->
-![Isometric Calendar Full Year](metrics.plugin.isocalendar.fullyear.svg)
+![Isometric Calendar Full Year](metrics.plugin.isocalendar.svg)
