@@ -1,6 +1,8 @@
 name: Star lists
+
 on:
   workflow_dispatch:
+
 jobs:
   metrics:
     runs-on: ubuntu-latest
@@ -9,8 +11,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.starlists.svg
-          token: NOT_NEEDED          # ✅ 对于此插件，这是正确且安全的写法
+          token: NOT_NEEDED
           base: ""
           plugin_starlists: yes
-          plugin_starlists_limit: 2  # 注意参数名建议用这个
-          # plugin_starlists_only: TC39 # 如需筛选，可以按格式添加
+          plugin_starlists_limit: 2
