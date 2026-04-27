@@ -1,7 +1,10 @@
-name: Metrics
+name: Commit calendar
+
 on:
-  schedule: [{cron: "0 0 * * *"}]  # 每天运行
-  workflow_dispatch: true
+  schedule:
+    - cron: "0 0 * * *"    # 每天 UTC 0 点运行
+  workflow_dispatch:       # 允许手动触发
+
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
