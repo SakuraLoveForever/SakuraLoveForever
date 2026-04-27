@@ -82,7 +82,6 @@
 
 <div>&nbsp;</div>
 
-<!-- 可选：底部装饰线 -->
 <div align="center">
-  <img src="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/main/assets/hr.gif" width="100%">
+  <img src="metrics.plugin.people.followers.svg" alt="Followers">
 </div>
