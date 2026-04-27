@@ -1,26 +1,26 @@
-name: Metrics - Isometric calendar
+name: Metrics - Combined
 on:
-  schedule: [{cron: "0 0 * * *"}]  # 每天更新一次
-  workflow_dispatch:               # 允许手动触发
-  push: {branches: ["main"]}       # 代码推送时更新
+  schedule: [{cron: "0 * * * *"}]
+  workflow_dispatch:
 
 jobs:
-  github-metrics:
+  metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # 你的 GitHub token（直接用 secrets.GITHUB_TOKEN 即可）
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
-          # 基本配置：不显示默认的大表格，只显示插件内容
+          token: ${{ secrets.METRICS_TOKEN }}
           base: ""
-          filename: metrics.plugin.isocalendar.svg
+          filename: metrics.combined.svg
           
-          # 启用 isometric calendar 插件
-          plugin_isocalendar: yes
+          # 启用 followers 插件
+          plugin_people: yes
+          plugin_people_limit: 0
+          plugin_people_size: 28
           
-          # 可选：设置日历显示时长（默认半年，想显示全年则加下面这行）
-          plugin_isocalendar_duration: full-year
+          # 启用 reactions 插件
+          plugin_reactions: yes
+          plugin_reactions_limit: 50
+          plugin_reactions_details: percentage
