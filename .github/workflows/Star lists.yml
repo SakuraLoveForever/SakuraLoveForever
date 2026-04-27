@@ -1,0 +1,20 @@
+name: Featured Star List
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Featured star list
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.starlists.svg
+          token: NOT_NEEDED
+          base: ""
+          plugin_starlists: yes
+          plugin_starlists_limit_repositories: 2
+          plugin_starlists_only: TC39
