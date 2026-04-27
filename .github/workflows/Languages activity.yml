@@ -1,0 +1,41 @@
+name: Metrics - 语言统计看板
+
+on:
+  # 每天自动运行一次
+  schedule:
+    - cron: '0 0 * * *'
+  # 允许手动触发
+  workflow_dispatch:
+  # 每次推送到 main 分支时运行
+  push:
+    branches: [ main, master ]
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    
+    steps:
+      - name: 🚀 生成 Metrics 看板
+        uses: lowlighter/metrics@latest
+        with:
+          # === 必填配置 ===
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: SakuraLoveForever   # 👈 改成你的用户名
+          
+          # === 基础模板（可选，不想要可以设为空）===
+          base: header, activity  # 显示头像和基本活动
+          
+          # === 🈷️ Languages 插件配置 ===
+          plugin_languages: yes
+          plugin_languages_limit: 6                    # 显示6种主要语言
+          plugin_languages_threshold: 2%               # 低于2%的不单独显示
+          plugin_languages_details: percentage, bytes-size  # 显示百分比和大小
+          
+          # === 可选：自定义颜色 ===
+          plugin_languages_colors: rainbow
+          
+          # === 输出文件 ===
+          filename: metrics.languages.svg
