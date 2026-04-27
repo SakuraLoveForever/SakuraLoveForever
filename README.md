@@ -83,10 +83,6 @@
 <div>&nbsp;</div>
 
 <div align="center">
-  <img src="metrics.plugin.starlists.svg" alt="星标列表">
-</div>
-
-<div align="center">
   <table>
     <tr>
       <td align="center">
