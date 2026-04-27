@@ -1,0 +1,36 @@
+name: Create Languages activity
+
+on:
+  workflow_dispatch:  # 手动触发
+  schedule:
+    - cron: '0 0 * * *'  # 每天自动运行
+  push:
+    branches: [ main, master ]
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # 使用你的 Secret（注意名字要和你在 Secrets 中设置的一致）
+          token: ${{ secrets.METRICS_TOKEN }}
+          
+          # 你的 GitHub 用户名
+          user: SakuraLoveForever
+          
+          # 不显示基础模板，只显示语言
+          base: ""
+          
+          # 启用语言插件
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_threshold: 2%
+          plugin_languages_details: percentage, bytes-size
+          plugin_languages_ignored: html, css, dockerfile, shell
+          
+          # 输出文件名
+          filename: metrics.languages.svg
