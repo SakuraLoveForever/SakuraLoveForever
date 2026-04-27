@@ -1,16 +1,15 @@
-name: Metrics - People plugins
+name: Metrics - Followers
 on:
   schedule: [{cron: "0 0 * * *"}]  # 每天更新一次
   workflow_dispatch:                # 允许手动触发
   push: {branches: ["main"]}       # 代码推送时触发
 
 jobs:
-  github-metrics-people:
+  github-metrics-followers:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      # 1. 生成「关注者」图片（用户维度）
       - uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.people.followers.svg
@@ -18,18 +17,5 @@ jobs:
           base: ""
           plugin_people: yes
           plugin_people_types: followers
-          # 可选：限制显示人数（默认24），例如只显示前10个
+          # 可选：限制显示人数，默认24
           # plugin_people_limit: 10
-
-      # 2. 生成「仓库贡献者/星标者」图片（仓库维度）
-      - uses: lowlighter/metrics@latest
-        with:
-          filename: metrics.plugin.people.repository.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: ""
-          template: repository
-          repo: SakuraLoveForever/SakuraLoveForever   # ⚠️ 改成你自己的用户名/仓库名
-          plugin_people: yes
-          plugin_people_types: contributors, stargazers, watchers, sponsors
-          # 可选：限制每类显示数量
-          # plugin_people_limit: 15
