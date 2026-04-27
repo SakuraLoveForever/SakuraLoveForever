@@ -96,5 +96,14 @@
 </div>
 
 <div align="center">
-  <img src="metrics.plugin.stars.svg" alt="最近 Star 的仓库">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="metrics.languages.svg" alt="编程语言统计">
+      </td>
+      <td align="center">
+        <img src="metrics.plugin.stars.svg" alt="最近 Star 的仓库">
+      </td>
+    </tr>
+  </table>
 </div>
