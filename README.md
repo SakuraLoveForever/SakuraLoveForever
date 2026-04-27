@@ -3,3 +3,4 @@
 [![trophy](https://github-profile-trophy.vercel.app/?username=SakuraLoveForever&theme=dracula)](https://github.com/ryo-ma/github-profile-trophy)
 [![Ashutosh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Ashutosh00710&theme=tokyo-night)](https://github.com/ashutosh00710/github-readme-activity-graph)
 [![GitHub Streak](https://streak-stats.demolab.com/?user=SakuraLoveForever)](https://git.io/streak-stats)
+![GitHub Stats](https://stats-cards-hk5o.vercel.app/api/github?username=SakuraLoveForever)
