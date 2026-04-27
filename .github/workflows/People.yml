@@ -11,7 +11,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.starlists.svg
-          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ 改用 GitHub 自带 token
+          token: ${{ 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 }}  # ✅ 改用 GitHub 自带 token
           base: ""
           plugin_starlists: yes
           plugin_starlists_limit: 2
