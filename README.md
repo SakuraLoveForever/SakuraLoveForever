@@ -94,3 +94,7 @@
     </tr>
   </table>
 </div>
+
+<div align="center">
+  <img src="metrics.plugin.stars.svg" alt="最近 Star 的仓库">
+</div>
