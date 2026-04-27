@@ -9,3 +9,4 @@
 
 <!-- 如果你改成了全年日历，则引用对应的文件名 -->
 ![Isometric Calendar Full Year](metrics.plugin.isocalendar.svg)
+![Starred topics](metrics.plugin.topics.icons.svg)
