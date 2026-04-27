@@ -6,3 +6,6 @@
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SakuraLoveForever&layout=pie&theme=tokyonight&hide_border=true)](https://github.com/anuraghazra/github-readme-stats)
 ![GitHub Stats](https://stats-cards-hk5o.vercel.app/api/github?username=SakuraLoveForever&theme=tokyonight)
 ![](https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg)
+
+<!-- 如果你改成了全年日历，则引用对应的文件名 -->
+![Isometric Calendar Full Year](metrics.plugin.isocalendar.fullyear.svg)
