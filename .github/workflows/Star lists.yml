@@ -1,20 +1,16 @@
-name: Featured Star List
-
+name: Star lists
 on:
-  schedule:
-    - cron: "0 0 * * *"
   workflow_dispatch:
-
 jobs:
   metrics:
     runs-on: ubuntu-latest
     steps:
-      - name: Featured star list
+      - name: Generate star list
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.starlists.svg
-          token: NOT_NEEDED
+          token: NOT_NEEDED          # ✅ 对于此插件，这是正确且安全的写法
           base: ""
           plugin_starlists: yes
-          plugin_starlists_limit_repositories: 2
-          plugin_starlists_only: TC39
+          plugin_starlists_limit: 2  # 注意参数名建议用这个
+          # plugin_starlists_only: TC39 # 如需筛选，可以按格式添加
