@@ -5,9 +5,15 @@
   </a>
 </div>
 
-<a href="https://space.bilibili.com/481036572">
-  <img src="https://img.shields.io/badge/Bilibili-B站-ff69b4?logo=bilibili">
-</a>
+<p align="center">
+  <a href="https://space.bilibili.com/481036572">
+    <img src="https://img.shields.io/badge/Bilibili-B站-ff69b4?logo=bilibili">
+  </a>
+  &emsp;
+  <a href="https://www.xiaohongshu.com/user/profile/5e72db210000000001000d66">
+    <img src="https://img.shields.io/badge/RedNote-小红书-ff69b4?logo=rednote&logoColor=white">
+  </a>
+</p>
 
 <div align="center">
   <picture>
