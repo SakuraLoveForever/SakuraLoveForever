@@ -155,10 +155,6 @@ Vue                      1 repo              ████░░░░░░░�
 <div>&nbsp;</div>
 
 <div align="center">
-  <img src="metrics.plugin.people.followers.svg" alt="Followers">
-</div>
-
-<div align="center">
   <table>
     <tr>
       <td align="center">
@@ -182,4 +178,8 @@ Vue                      1 repo              ████░░░░░░░�
       </td>
     </tr>
   </table>
+</div>
+
+<div align="center">
+  <img src="metrics.plugin.people.followers.svg" alt="Followers">
 </div>
