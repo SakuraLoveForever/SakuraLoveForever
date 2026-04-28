@@ -5,6 +5,14 @@
   </a>
 </div>
 
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake.svg">
+    <img alt="github-snake" src="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
+  </picture>
+</div>
+
 <!--START_SECTION:waka-->
 ![Code Time](http://img.shields.io/badge/Code%20Time-0%20secs-blue?style=flat)
 
@@ -80,6 +88,10 @@ Vue                      1 repo              ████░░░░░░░�
 <!-- 空行分隔 -->
 <div>&nbsp;</div>
 
+<div align="center">
+  <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D 贡献图（彩色）">
+</div>
+
 <!-- 第一行：GitHub 统计 + 连续打卡（两列布局） -->
 <div align="center">
   <table>
@@ -127,27 +139,20 @@ Vue                      1 repo              ████░░░░░░░�
 
 <div>&nbsp;</div>
 
-<!-- 第四行：贪吃蛇动画（全宽居中） -->
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake.svg">
-    <img alt="github-snake" src="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
-  </picture>
-</div>
-
 <div>&nbsp;</div>
 
 <div align="center">
   <table>
+    <!-- 第 1 行（原第 3 行）：Issues/PRs 和 Reactions -->
     <tr>
       <td align="center">
-        <img src="metrics.plugin.isocalendar.svg" alt="Isometric Calendar">
+        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
       </td>
       <td align="center">
-        <img src="metrics.plugin.calendar.full.svg" alt="Commit calendar">
+        <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
       </td>
     </tr>
+    <!-- 第 2 行：语言统计 和 Star 仓库 -->
     <tr>
       <td align="center">
         <img src="metrics.languages.svg" alt="编程语言统计">
@@ -156,12 +161,13 @@ Vue                      1 repo              ████░░░░░░░�
         <img src="metrics.plugin.stars.svg" alt="最近 Star 的仓库">
       </td>
     </tr>
+    <!-- 第 3 行（原第 1 行）：日历类 -->
     <tr>
       <td align="center">
-        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
+        <img src="metrics.plugin.isocalendar.svg" alt="Isometric Calendar">
       </td>
       <td align="center">
-        <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
+        <img src="metrics.plugin.calendar.full.svg" alt="Commit calendar">
       </td>
     </tr>
   </table>
