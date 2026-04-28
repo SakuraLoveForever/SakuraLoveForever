@@ -92,7 +92,6 @@ Vue                      1 repo              ████░░░░░░░�
   <img src="profile-3d-contrib/profile-night-rainbow.svg" alt="3D 贡献图（彩色）">
 </div>
 
-<!-- 第一行：GitHub 统计 + 连续打卡（两列布局） -->
 <div align="center">
   <table>
     <tr>
@@ -100,44 +99,33 @@ Vue                      1 repo              ████░░░░░░░�
         <a href="https://github.com/anuraghazra/github-readme-stats">
           <img src="https://github-readme-stats.vercel.app/api?username=SakuraLoveForever&theme=tokyonight&hide_border=true" alt="GitHub Stats">
         </a>
-      </td>
+      </a>
       <td align="center">
         <a href="https://git.io/streak-stats">
           <img src="https://streak-stats.demolab.com?user=SakuraLoveForever&theme=tokyonight&hide_border=true&short_numbers=true" alt="GitHub Streak">
         </a>
-      </td>
+      </a>
     </tr>
-  </table>
-</div>
-
-<div>&nbsp;</div>
-
-<!-- 第二行：活动图（全宽） -->
-<div align="center">
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=SakuraLoveForever&theme=tokyo-night&hide_border=true" alt="Activity Graph" width="98%">
-  </a>
-</div>
-
-<div>&nbsp;</div>
-
-<!-- 第三行：语言饼图 + 简化统计（两列布局） -->
-<div align="center">
-  <table>
     <tr>
       <td align="center" width="50%">
         <a href="https://github.com/anuraghazra/github-readme-stats">
           <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SakuraLoveForever&layout=pie&theme=tokyonight&hide_border=true" alt="Top Langs">
         </a>
-      </td>
+      </a>
       <td align="center" width="50%">
         <img src="https://stats-cards-hk5o.vercel.app/api/github?username=SakuraLoveForever&theme=tokyonight" alt="GitHub Stats Card">
-      </td>
+      </a>
     </tr>
   </table>
 </div>
 
 <div>&nbsp;</div>
+
+<div align="center">
+  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+    <img src="https://github-readme-activity-graph.vercel.app/graph?username=SakuraLoveForever&theme=tokyo-night&hide_border=true" alt="Activity Graph" width="98%">
+  </a>
+</div>
 
 <div>&nbsp;</div>
 
