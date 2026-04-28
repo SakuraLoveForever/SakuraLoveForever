@@ -138,7 +138,6 @@ Vue                      1 repo              ████░░░░░░░�
 
 <div>&nbsp;</div>
 
-<!-- 第五行：Metrics 插件（两列布局） -->
 <div align="center">
   <table>
     <tr>
@@ -149,32 +148,20 @@ Vue                      1 repo              ████░░░░░░░�
         <img src="metrics.plugin.calendar.full.svg" alt="Commit calendar">
       </td>
     </tr>
-  </table>
-</div>
-
-<div>&nbsp;</div>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
-      </td>
-      <td align="center">
-        <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
-      </td>
-    </tr>
-  </table>
-</div>
-
-<div align="center">
-  <table>
     <tr>
       <td align="center">
         <img src="metrics.languages.svg" alt="编程语言统计">
       </td>
       <td align="center">
         <img src="metrics.plugin.stars.svg" alt="最近 Star 的仓库">
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
+      </td>
+      <td align="center">
+        <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
       </td>
     </tr>
   </table>
