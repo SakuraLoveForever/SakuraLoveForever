@@ -15,6 +15,16 @@
   </a>
 </p>
 
+<p align="center">
+  <!-- 访问量统计 -->
+  <img src="https://komarev.com/ghpvc/?username=SakuraLoveForever&label=Views&color=orange&style=flat" alt="访问量统计" />
+  &emsp;
+  <!-- WakaTime 编码时间 -->
+  <a href="https://wakatime.com/@SakuraLoveForever">
+    <img src="https://wakatime.com/badge/user/75a2691f-9e39-4751-bdfd-765494478dbe.svg" alt="WakaTime" />
+  </a>
+</p>
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
