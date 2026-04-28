@@ -6,7 +6,7 @@
 </div>
 
 <p align="center">
-  <a href="https://space.bilibili.com/481036572"><img src="https://img.shields.io/badge/Bilibili-B%E7%AB%99-FF69B4?logo=bilibili&logoColor=white"></a>&nbsp;&nbsp;
+  <a href="https://space.bilibili.com/481036572"><img src="https://img.shields.io/badge/Bilibili-B%E7%AB%99-00A1D6?logo=bilibili&logoColor=white"></a>&nbsp;&nbsp;
   <a href="https://www.xiaohongshu.com/user/profile/5e72db210000000001000d66"><img src="https://img.shields.io/badge/xhs-%E5%B0%8F%E7%BA%A2%E4%B9%A6-FF0000?logo=rednote&logoColor=white"></a>&nbsp;&nbsp;
   <img src="https://komarev.com/ghpvc/?username=SakuraLoveForever&label=Views&color=orange&style=flat">&nbsp;&nbsp;
   <a href="https://wakatime.com/@SakuraLoveForever"><img src="https://wakatime.com/badge/user/75a2691f-9e39-4751-bdfd-765494478dbe.svg"></a>
