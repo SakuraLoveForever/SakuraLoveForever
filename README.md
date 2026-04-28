@@ -5,6 +5,10 @@
   </a>
 </div>
 
+<a href="https://space.bilibili.com/481036572">
+  <img src="https://img.shields.io/badge/Bilibili-B站-ff69b4?logo=bilibili">
+</a>
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
