@@ -1,1 +1,80 @@
+name: Metrics - 完整统计
 
+on:
+  push:
+    branches: [ main, master ]   # 每次 push 到 main/master 都运行
+  schedule:
+    - cron: '0 0 * * *'          # 每天 UTC 0 点运行
+  workflow_dispatch:              # 允许手动触发
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: SakuraLoveForever
+          
+          # ============================================
+          # 基础配置
+          # ============================================
+          base: header, activity
+          
+          # ============================================
+          # 1. 语言统计（合并了 Languages activity.yml 和 Create Languages activity）
+          # ============================================
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_threshold: 2%
+          plugin_languages_details: percentage, bytes-size
+          plugin_languages_colors: rainbow
+          
+          # ============================================
+          # 2. 最近 Star 仓库
+          # ============================================
+          plugin_stars: yes
+          plugin_stars_limit: 6
+          
+          # ============================================
+          # 3. Issues & PR 跟进
+          # ============================================
+          plugin_followup: yes
+          
+          # ============================================
+          # 4. 提交日历（Full history calendar）
+          # ============================================
+          plugin_calendar: yes
+          plugin_calendar_limit: 0
+          
+          # ============================================
+          # 5. 关注者统计
+          # ============================================
+          plugin_people: yes
+          plugin_people_types: followers
+          
+          # ============================================
+          # 6. 评论区反应统计
+          # ============================================
+          plugin_reactions: yes
+          plugin_reactions_limit: 100
+          plugin_reactions_details: percentage
+          
+          # ============================================
+          # 7. 话题图标（Icons）
+          # ============================================
+          plugin_topics: yes
+          plugin_topics_limit: 0
+          plugin_topics_mode: icons
+          
+          # ============================================
+          # 输出配置（合并成一张总图）
+          # ============================================
+          filename: metrics.all.svg
+          
+          # 强制覆盖，避免冲突
+          commit_force: yes
+          commit_sha: ""
