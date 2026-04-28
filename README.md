@@ -6,25 +6,11 @@
 </div>
 
 <p align="center">
-  <a href="https://space.bilibili.com/481036572">
-    <img src="https://img.shields.io/badge/Bilibili-B站-ff69b4?logo=bilibili">
-  </a>
-  &emsp;
-  <a href="https://www.xiaohongshu.com/user/profile/5e72db210000000001000d66">
-    <img src="https://img.shields.io/badge/RedNote-小红书-ff69b4?logo=rednote&logoColor=white">
-  </a>
+  <a href="https://space.bilibili.com/481036572"><img src="https://img.shields.io/badge/Bilibili-FF69B4?logo=bilibili&logoColor=white"></a>&nbsp;&nbsp;
+  <a href="https://www.xiaohongshu.com/user/profile/5e72db210000000001000d66"><img src="https://img.shields.io/badge/RedNote-FF69B4?logo=rednote&logoColor=white"></a>&nbsp;&nbsp;
+  <img src="https://komarev.com/ghpvc/?username=SakuraLoveForever&label=Views&color=orange&style=flat">&nbsp;&nbsp;
+  <a href="https://wakatime.com/@SakuraLoveForever"><img src="https://wakatime.com/badge/user/75a2691f-9e39-4751-bdfd-765494478dbe.svg"></a>
 </p>
-
-<p align="center">
-  <!-- 访问量统计 -->
-  <img src="https://komarev.com/ghpvc/?username=SakuraLoveForever&label=Views&color=orange&style=flat" alt="访问量统计" />
-  &emsp;
-  <!-- WakaTime 编码时间 -->
-  <a href="https://wakatime.com/@SakuraLoveForever">
-    <img src="https://wakatime.com/badge/user/75a2691f-9e39-4751-bdfd-765494478dbe.svg" alt="WakaTime" />
-  </a>
-</p>
-
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
