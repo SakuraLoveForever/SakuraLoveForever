@@ -12,6 +12,9 @@
   <a href="https://wakatime.com/@SakuraLoveForever"><img src="https://wakatime.com/badge/user/75a2691f-9e39-4751-bdfd-765494478dbe.svg"></a>&nbsp;&nbsp;
   <a href="https://codeforces.com/profile/Sakura_Love">
     <img src="https://img.shields.io/badge/dynamic/json?color=FFB347&label=Codeforces&logo=codeforces&logoColor=white&query=%24.result%5B0%5D.maxRating&url=https%3A%2F%2Fcodeforces.com%2Fapi%2Fuser.info%3Fhandles%3DSakura_Love&style=flat" alt="Codeforces Peak Rating">
+  </a>&nbsp;&nbsp;
+  <a href="https://www.luogu.com.cn/user/233253">
+    <img src="https://img.shields.io/badge/Luogu-%E6%B4%9B%E8%B0%B7-26A641?logo=luogu&logoColor=white" alt="Luogu">
   </a>
 </p>
 
