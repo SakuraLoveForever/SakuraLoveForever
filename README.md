@@ -27,13 +27,11 @@
 </div>
 
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-66%20hrs%2022%20mins-blue?style=flat)
-
-![Profile Views](http://img.shields.io/badge/Profile%20Views-9-blue?style=flat)
+![Profile Views](http://img.shields.io/badge/Profile%20Views-8-blue?style=flat)
 
 **🐱 My GitHub Data** 
 
-> 📦 475.0 kB Used in GitHub's Storage 
+> 📦 475.9 kB Used in GitHub's Storage 
  > 
 > 🏆 193 Contributions in the Year 2026
  > 
@@ -43,54 +41,6 @@
  > 
 > 🔑 0 Private Repositories 
  > 
-**I'm a Night 🦉** 
-
-```text
-🌞 Morning                34 commits          ⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   17.89 % 
-🌆 Daytime                54 commits          ⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   28.42 % 
-🌃 Evening                58 commits          ⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   30.53 % 
-🌙 Night                  44 commits          ⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   23.16 % 
-```
-📅 **I'm Most Productive on Monday** 
-
-```text
-Monday                   57 commits          ⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   30.00 % 
-Tuesday                  48 commits          ⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   25.26 % 
-Wednesday                21 commits          ⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   11.05 % 
-Thursday                 12 commits          ⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   06.32 % 
-Friday                   14 commits          ⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   07.37 % 
-Saturday                 32 commits          ⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   16.84 % 
-Sunday                   6 commits           ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   03.16 % 
-```
-
-
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Asia/Shanghai
-
-💬 Programming Languages: 
-Kotlin                   6 hrs 24 mins       ⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   33.64 % 
-HTML                     6 hrs 21 mins       ⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   33.35 % 
-Python                   3 hrs 45 mins       ⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   19.67 % 
-JavaScript               28 mins             ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   02.46 % 
-Markdown                 26 mins             ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   02.29 % 
-
-🔥 Editors: 
-VS Code                  19 hrs 2 mins       ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛   99.82 % 
-Claude Code              2 mins              ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   00.18 % 
-
-🐱‍💻 Projects: 
-Anime                    7 hrs 19 mins       ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   38.38 % 
-WeChatGift               5 hrs 10 mins       ⬛⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   27.10 % 
-PC_System_Auto_Scripts   4 hrs 20 mins       ⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   22.80 % 
-Unknown Project          1 hr 59 mins        ⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   10.41 % 
-论文                       15 mins             ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜   01.31 % 
-
-💻 Operating System: 
-Windows                  19 hrs 4 mins       ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛   100.00 % 
-```
-
 **I Mostly Code in HTML** 
 
 ```text
@@ -102,7 +52,7 @@ Vue                      1 repo              ⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜�
 
 
 
- Last Updated on 22/05/2026 20:16:28 UTC
+ Last Updated on 23/05/2026 19:42:24 UTC
 <!--END_SECTION:waka-->
 
 <!-- 空行分隔 -->
