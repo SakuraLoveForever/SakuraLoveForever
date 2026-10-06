@@ -185,3 +185,9 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 <div align="center">
   <img src="metrics.plugin.people.followers.svg" alt="Followers">
 </div>
+
+## 主页预览
+
+![SakuraLoveForever GitHub 个人主页预览](docs/images/github-profile-preview.png)
+
+截图为静态展示，实时统计以主页上的动态徽章为准。
