@@ -26,11 +26,29 @@
   </picture>
 </div>
 
+<p align="center">
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-tokens.json&cacheSeconds=300" alt="Codex tokens">&nbsp;
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-time.json&cacheSeconds=300" alt="Codex time">&nbsp;
+  <br>
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-tokens.json&cacheSeconds=300" alt="DeepSeek Harness tokens">&nbsp;
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-time.json&cacheSeconds=300" alt="DeepSeek Harness time">&nbsp;
+  <br>
+</p>
+
+<details>
+<summary>Tokscale 原生 token 可视化</summary>
+
+<div align="center">
+  <img src="assets/ai-usage.png" alt="Tokscale 原生 Wrapped：Codex 与 DeepSeek Harness token 使用量" width="80%">
+</div>
+
+</details>
+
+<p align="center">本机现存日志 · 每天北京时间 08:30 自动同步 · 图中费用为 API 等价估算，不代表实际扣费<br>
+会话时长按会话累计，可能包含并行重叠；历史区间不代表真实开始使用日期<br>
+<a href="docs/profile-statistics.md">数据覆盖范围、统计口径与自动同步说明</a></p>
+
 <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-105%20hrs%2036%20mins-blue?style=flat)
-
-![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-105%20hrs%2031%20mins-blue?style=flat)
-
 ![Profile Views](http://img.shields.io/badge/Profile%20Views-0-blue?style=flat)
 
 **🐱 My GitHub Data** 
@@ -82,12 +100,6 @@ No Activity Tracked This Week
 
 💻 Operating System: 
 No Activity Tracked This Week
-```
-
-🤖 **AI Coding This Week** 
-
-```text
-No AI Coding Activity Tracked This Week
 ```
 
 **I Mostly Code in HTML** 
@@ -143,8 +155,8 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 <div>&nbsp;</div>
 
 <div align="center">
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=SakuraLoveForever&theme=tokyo-night&hide_border=true" alt="Activity Graph" width="98%">
+  <a href="https://github.com/lowlighter/metrics">
+    <img src="metrics.plugin.calendar.full.svg" alt="GitHub 活动日历（lowlighter/metrics 原生模块）" width="98%">
   </a>
 </div>
 
@@ -185,9 +197,3 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 <div align="center">
   <img src="metrics.plugin.people.followers.svg" alt="Followers">
 </div>
-
-## 主页预览
-
-![SakuraLoveForever GitHub 个人主页预览](docs/images/github-profile-preview.png)
-
-截图为静态展示，实时统计以主页上的动态徽章为准。

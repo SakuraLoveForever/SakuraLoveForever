@@ -1,0 +1,34 @@
+name: Profile statistics checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/profile_stats.py'
+      - 'tests/**'
+      - 'data/ai-usage.json'
+      - '.github/workflows/profile-stats.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-statistics
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify aggregate processing
+        run: python -m unittest discover -s tests -v
+      - name: Verify Shields endpoint data matches the saved snapshot
+        run: python scripts/profile_stats.py render
+      - run: git diff --exit-code -- data/badges

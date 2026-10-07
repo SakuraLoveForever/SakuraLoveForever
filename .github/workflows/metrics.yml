@@ -78,3 +78,12 @@ jobs:
           # 强制覆盖，避免冲突
           commit_force: yes
           commit_sha: ""
+      - name: Refresh existing contribution calendar
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: SakuraLoveForever
+          filename: metrics.plugin.calendar.full.svg
+          base: ""
+          plugin_calendar: yes
+          plugin_calendar_limit: 0
