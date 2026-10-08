@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/profile_stats.py'
+      - '.github/workflows/profile-3d.yml'
       - 'tests/**'
       - 'data/ai-usage.json'
       - '.github/workflows/profile-stats.yml'
@@ -23,8 +24,8 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Verify aggregate processing

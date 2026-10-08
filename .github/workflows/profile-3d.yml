@@ -8,13 +8,26 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: profile-3d-publication
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v5
-      - uses: yoshi389111/github-profile-3d-contrib@latest
+      - name: Generate 3D contribution charts
+        id: generate
+        continue-on-error: true
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+      - name: Retry generation after an API failure
+        if: steps.generate.outcome == 'failure'
+        uses: yoshi389111/github-profile-3d-contrib@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
@@ -22,7 +35,11 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add -A .
-          if git commit -m "generated"; then
-            git push
+          git add -- profile-3d-contrib
+          if git diff --cached --quiet; then
+            echo "No changed 3D assets"
+            exit 0
           fi
+          git commit -m "generated"
+          git pull --rebase origin "${GITHUB_REF_NAME:-main}"
+          git push origin "HEAD:${GITHUB_REF_NAME:-main}"
