@@ -21,6 +21,8 @@ jobs:
           SHOW_EDITORS: "True"
           SHOW_LANGUAGE_PER_REPO: "True"
           SHOW_LOC_CHART: "False"
+          # Profile views use the live Komarev counter in the README header.
+          SHOW_PROFILE_VIEWS: "False"
           # AI usage is collected from local Codex/DSH logs, outside the waka block.
           SHOW_TOTAL_CODE_TIME: "False"
           SHOW_AI_CODE_TIME: "False"
