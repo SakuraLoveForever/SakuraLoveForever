@@ -2,7 +2,7 @@
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
   "source": "tokscale@4.18.0",
-  "updated_at": "2026-10-08T04:01:20+08:00",
+  "updated_at": "2026-10-12T08:32:08+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -408,17 +408,57 @@
         },
         {
           "date": "2026-10-08",
-          "tokens": 25768306,
-          "input": 721683,
-          "output": 97483,
-          "cache_read": 24914048,
+          "tokens": 87038584,
+          "input": 2610627,
+          "output": 249826,
+          "cache_read": 84090240,
           "cache_write": 0,
-          "reasoning": 35092,
-          "active_ms": 6048695
+          "reasoning": 87891,
+          "active_ms": 16629205
+        },
+        {
+          "date": "2026-10-09",
+          "tokens": 100883049,
+          "input": 1980804,
+          "output": 253681,
+          "cache_read": 98547840,
+          "cache_write": 0,
+          "reasoning": 100724,
+          "active_ms": 17304107
+        },
+        {
+          "date": "2026-10-10",
+          "tokens": 80059506,
+          "input": 1927934,
+          "output": 221741,
+          "cache_read": 77827584,
+          "cache_write": 0,
+          "reasoning": 82247,
+          "active_ms": 14547707
+        },
+        {
+          "date": "2026-10-11",
+          "tokens": 59850724,
+          "input": 1771540,
+          "output": 193374,
+          "cache_read": 57782528,
+          "cache_write": 0,
+          "reasoning": 103282,
+          "active_ms": 16067652
+        },
+        {
+          "date": "2026-10-12",
+          "tokens": 12113984,
+          "input": 448363,
+          "output": 37534,
+          "cache_read": 11606528,
+          "cache_write": 0,
+          "reasoning": 21559,
+          "active_ms": 2748690
         }
       ],
-      "active_ms": 352482460,
-      "sessions": 641,
+      "active_ms": 413731126,
+      "sessions": 756,
       "max_concurrent_sessions": 4
     },
     "dsh": {
