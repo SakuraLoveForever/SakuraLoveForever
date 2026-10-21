@@ -43,10 +43,10 @@ python -m unittest discover -s tests -v
 
 ## 持续自动同步
 
-采用 **Windows 任务计划程序，每 15 分钟一次**。采集日期固定使用 Asia/Shanghai。电脑开机且用户登录时运行；错过的执行在恢复后补跑。采集后只提交、推送汇总 JSON、Shields 数据和原生 PNG。先采集并保存本地提交，再拉取远程并推送；GitHub 暂时断网不会阻断本地采集。
+采用 **Windows 任务计划程序，每小时一次**。采集日期固定使用 Asia/Shanghai。电脑开机且用户登录时运行；错过的执行在恢复后补跑。不需要一直打开统计程序或网页：每次运行都会读取本机仍保留的全部受支持历史日志，补入两次运行之间的用量，不只统计程序运行的那段时间。已删除、未记录或未同步到本机的日志无法自动补回。采集后只提交、推送汇总 JSON、Shields 数据和原生 PNG。先采集并保存本地提交，再拉取远程并推送；GitHub 暂时断网不会阻断本地采集。
 
 ```powershell
-# 安装或更新每 15 分钟任务（普通用户权限，隐藏运行）。
+# 安装或更新每小时任务（普通用户权限，隐藏运行）。
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -InstallTask -Publish
 
 # 手动立即同步并发布。
@@ -58,7 +58,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -Re
 
 任务名 SakuraLoveForever-ProfileStats；日志 %LOCALAPPDATA%/SakuraLoveForever/profile-sync.log。需要干净的 main 分支和有效 Git 凭证；工作区正在编辑或切换分支时跳过，避免处理其他工作。恢复干净的 main 后下次重试。采集失败保留旧图，推送失败保留本地提交以便下次重试。恢复后不会高频追赶每一次遗漏。
 
-定时任务通过 `wscript.exe //B` 启动 `scripts/sync-profile-background.vbs`，从进程创建时隐藏 PowerShell；统计 CLI 子进程也使用 Windows 无窗口标志。后台不显示命令行窗口或托盘图标，错误仍保留在上述日志，任务计划程序保留失败退出码。已有任务需重新安装，或只将现有任务的操作更新为此入口；保留原来的每 15 分钟触发器和登录权限。
+定时任务通过 `wscript.exe //B` 启动 `scripts/sync-profile-background.vbs`，从进程创建时隐藏 PowerShell；统计 CLI 子进程也使用 Windows 无窗口标志。后台不显示命令行窗口或托盘图标，错误仍保留在上述日志，任务计划程序保留失败退出码。已有任务需重新安装，或只将现有任务的操作更新为此入口；使用每小时触发器并保留原来的登录权限。
 
 需要手动静默运行时可执行：
 

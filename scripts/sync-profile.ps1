@@ -27,14 +27,14 @@ if ($InstallTask) {
     $action = New-ScheduledTaskAction -Execute (Join-Path $env:SystemRoot 'System32\wscript.exe') `
         -Argument $arguments -WorkingDirectory $repoRoot
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
-        -RepetitionInterval (New-TimeSpan -Minutes 15)
+        -RepetitionInterval (New-TimeSpan -Hours 1)
     $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -Hidden `
         -ExecutionTimeLimit (New-TimeSpan -Minutes 20) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
     $principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) `
         -LogonType Interactive -RunLevel Limited
     Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings `
         -Principal $principal -Force | Out-Null
-    Write-Output "Installed $taskName (every 15 minutes while logged in; publish=$Publish)"
+    Write-Output "Installed $taskName (every hour while logged in; publish=$Publish)"
     exit 0
 }
 
