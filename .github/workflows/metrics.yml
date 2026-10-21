@@ -2,7 +2,9 @@ name: Metrics - 完整统计
 
 on:
   push:
-    branches: [ main, master ]   # 每次 push 到 main/master 都运行
+    branches: [ main, master ]   # 配置变更时运行；其余统计按日刷新
+    paths:
+      - '.github/workflows/metrics.yml'
   schedule:
     - cron: '0 0 * * *'          # 每天 UTC 0 点运行
   workflow_dispatch:              # 允许手动触发
@@ -40,11 +42,6 @@ jobs:
           plugin_stars_limit: 6
           
           # ============================================
-          # 3. Issues & PR 跟进
-          # ============================================
-          plugin_followup: yes
-          
-          # ============================================
           # 4. 提交日历（Full history calendar）
           # ============================================
           plugin_calendar: yes
@@ -55,13 +52,6 @@ jobs:
           # ============================================
           plugin_people: yes
           plugin_people_types: followers
-          
-          # ============================================
-          # 6. 评论区反应统计
-          # ============================================
-          plugin_reactions: yes
-          plugin_reactions_limit: 100
-          plugin_reactions_details: percentage
           
           # ============================================
           # 7. 话题图标（Icons）

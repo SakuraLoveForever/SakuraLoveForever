@@ -11,7 +11,7 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "profile_stats.py"
 
 def export(client, tokens=325):
     return {
-        "meta": {"version": "4.18.0"},
+        "meta": {"version": "4.20.0"},
         "summary": {"totalTokens": tokens},
         "contributions": [{
             "date": "2026-10-01", "totals": {"tokens": tokens},
@@ -62,6 +62,16 @@ class ProfileStatsTests(unittest.TestCase):
         badge = json.loads((self.root / "data/badges/codex-output.json").read_text())
         self.assertEqual(badge["message"], "25")  # output including reasoning
         self.assertFalse((self.root / "assets/ai-usage.svg").exists())
+
+    def test_badges_separate_cache_and_show_snapshot_time(self):
+        result = self.collect()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        badges = self.root / "data/badges"
+        self.assertEqual(json.loads((badges / "codex-noncache.json").read_text())["message"], "125")
+        self.assertEqual(json.loads((badges / "codex-cached.json").read_text())["message"], "200")
+        snapshot = json.loads((self.root / "data/ai-usage.json").read_text())
+        self.assertEqual(json.loads((badges / "updated.json").read_text())["message"],
+                         snapshot["updated_at"])
 
     def test_bad_export_preserves_previous_snapshot_and_card(self):
         self.assertEqual(self.collect().returncode, 0)

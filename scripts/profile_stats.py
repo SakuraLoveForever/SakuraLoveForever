@@ -9,7 +9,7 @@ import tempfile
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-VERSION = "4.18.0"
+VERSION = "4.20.0"
 SHANGHAI = timezone(timedelta(hours=8))
 TOOLS = {"codex": ("Codex", "#7aa2f7"), "dsh": ("DeepSeek Harness", "#bb9af7")}
 FIELDS = {"input": "input", "output": "output", "cache_read": "cacheRead",
@@ -85,12 +85,13 @@ def render_badges(root, data):
         counts = {key: sum(row[key] for row in tool["daily"]) for key in FIELDS}
         values = {
             "tokens": sum(row["tokens"] for row in tool["daily"]),
+            "noncache": counts["input"] + counts["output"] + counts["reasoning"],
             "input": counts["input"] + counts["cache_read"] + counts["cache_write"],
             "output": counts["output"] + counts["reasoning"],
             "cached": counts["cache_read"],
             "time": duration(tool["active_ms"]),
         }
-        labels = {"tokens": "Tokens", "input": "Input", "output": "Output",
+        labels = {"tokens": "Tokens (incl. cache)", "noncache": "Non-cached Tokens", "input": "Input", "output": "Output",
                   "cached": "Cached Input", "time": "Active Session Time"}
         for key, value in values.items():
             badge = {"schemaVersion": 1, "label": f"{name} {labels[key]}",
@@ -98,6 +99,10 @@ def render_badges(root, data):
                      "color": color.lstrip("#")}
             atomic_write(root / "data/badges" / f"{client}-{key}.json",
                          json.dumps(badge, ensure_ascii=False, indent=2) + "\n")
+    atomic_write(root / "data/badges/updated.json", json.dumps({
+        "schemaVersion": 1, "label": "AI usage updated", "message": data["updated_at"],
+        "color": "7aa2f7",
+    }, indent=2) + "\n")
 
 
 def collect(args):
@@ -110,7 +115,12 @@ def collect(args):
         command = [npx, "--yes", f"tokscale@{VERSION}", *arguments]
         if args.home and arguments[0] != "config":
             command.extend(["--home", str(args.home)])
-        subprocess.run(command, env=environment, check=True, capture_output=True, timeout=300)
+        result = subprocess.run(command, env=environment, capture_output=True, timeout=300)
+        diagnostics = result.stderr.decode("utf-8", errors="replace").strip()
+        if result.returncode:
+            raise ValueError(f"Tokscale {arguments[0]} failed ({result.returncode}): {diagnostics[-4000:]}")
+        if diagnostics:
+            print(diagnostics, file=sys.stderr)
 
     if not args.import_dir:
         if not npx:

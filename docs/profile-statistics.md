@@ -2,7 +2,7 @@
 
 ## 使用现成项目
 
-- [Tokscale](https://github.com/junhoyeo/tokscale)：固定使用 4.18.0 原生解析器统计 Codex 与 DeepSeek Harness 的 token/会话活跃时长。assets/ai-usage.png 直接由 wrapped --clients 命令生成，未另做图表设计。
+- [Tokscale](https://github.com/junhoyeo/tokscale)：固定使用 4.20.0 原生解析器统计 Codex 与 DeepSeek Harness 的 token/会话活跃时长。assets/ai-usage.png 直接由 wrapped --clients 命令生成，未另做图表设计。
 - [Shields.io](https://shields.io/badges/endpoint-badge)：读取 data/badges/*.json，采用现成徽章样式展示各工具累计 token 和会话活跃时长。额外的输入、输出、缓存分项端点也已生成，可直接引用。
 - [lowlighter/metrics](https://github.com/lowlighter/metrics)：失效的外部 Activity Graph 模块改用仓库已有贡献日历 metrics.plugin.calendar.full.svg，继续由已有 metrics.yml 工作流更新，未另写活动图渲染器。
 
@@ -41,18 +41,18 @@ python -m unittest discover -s tests -v
 
 仅更新 Shields 数据：python scripts/profile_stats.py render。迁移用户目录时可用 collect --home C:/old-user-home；其他历史目录可加入上述隔离配置中的 scanner.extraScanPaths.codex 或 scanner.extraScanPaths.dsh，保留原配置并重新运行。直接导入已保存的固定版本导出可用 collect --import-dir <目录>，目录内需要 codex.json、dsh.json；离线模式只更新 JSON/徽章，原生年度 PNG 需要本机日志。
 
-## 每日自动同步
+## 持续自动同步
 
-采用 **Windows 任务计划程序，每天北京时间 08:30 一次**。当前电脑时区为 Asia/Shanghai；任务按系统本地时间触发，若电脑以后切换时区，应重新核对执行时间。电脑开机且用户登录时运行；错过的执行在恢复后补跑。采集后只提交、推送汇总 JSON、Shields 数据和原生 PNG。
+采用 **Windows 任务计划程序，每 15 分钟一次**。采集日期固定使用 Asia/Shanghai。电脑开机且用户登录时运行；错过的执行在恢复后补跑。采集后只提交、推送汇总 JSON、Shields 数据和原生 PNG。先采集并保存本地提交，再拉取远程并推送；GitHub 暂时断网不会阻断本地采集。
 
 ```powershell
-# 安装每日任务（普通用户权限，隐藏运行）。
+# 安装或更新每 15 分钟任务（普通用户权限，隐藏运行）。
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -InstallTask -Publish
 
 # 手动立即同步并发布。
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -Publish
 
-# 移除本机每日任务。
+# 移除本机同步任务。
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -RemoveTask
 ```
 
@@ -65,3 +65,11 @@ GitHub 的 Profile statistics checks 工作流运行测试并检查徽章数据�
 回归测试覆盖缓存/推理不重复计数、私有字段不进入汇总、无效导出不覆盖旧统计，以及 token/时间历史下降保护。首次接入已用 ccusage@20.0.26 独立校验 Codex 截至 **2026-10-07** 的历史：两者均为 **1,955,133,139 token**，差值为 0。当前日持续有新调用，不同采集时刻的当日总量可能不同。
 
 Tokscale 和 ccusage 均为 MIT 项目。本仓库没有复制修改它们的展示代码，原生图保留 Tokscale 标识。
+
+## 2026-10-21 更新修复
+
+- Tokscale 从 4.18.0 升到固定的 4.20.0：实测旧版扫描漏掉压缩的 Codex rollout，新版能读取现存 .jsonl.zst，未绕过历史下降保护。部分日志没有受支持的 usage 记录，CLI 会报告遗漏；这些 token 无法凭空补齐。
+- 新增非缓存 token、缓存读取和采集时间徽章。时间徽章表示成功采集时间，不表示推送或浏览器缓存刷新时间。非缓存分项不含缓存读取/写入。
+- 删除 Issues/PR 与 Reactions 展示，并停止总图中的这两个插件。
+- 原先 README 的独立 Star SVG 最后提交于 2026-04-28，总图更新不会更新它；新增独立 stars.yml，每 15 分钟生成它。GitHub Actions 的 schedule 可能排队延迟，并非秒级实时。
+- token 任务依赖此电脑开机、登录和 main 工作区干净；联网后下轮重试发布。GitHub 与 Shields 缓存会有额外延迟。

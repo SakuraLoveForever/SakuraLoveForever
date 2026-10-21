@@ -30,9 +30,16 @@
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-tokens.json&cacheSeconds=300" alt="Codex tokens">&nbsp;
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-time.json&cacheSeconds=300" alt="Codex time">&nbsp;
   <br>
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-noncache.json&cacheSeconds=300" alt="Codex non-cached tokens">&nbsp;
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-cached.json&cacheSeconds=300" alt="Codex cached input">&nbsp;
+  <br>
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-tokens.json&cacheSeconds=300" alt="DeepSeek Harness tokens">&nbsp;
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-time.json&cacheSeconds=300" alt="DeepSeek Harness time">&nbsp;
   <br>
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-noncache.json&cacheSeconds=300" alt="DeepSeek Harness non-cached tokens">&nbsp;
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-cached.json&cacheSeconds=300" alt="DeepSeek Harness cached input">&nbsp;
+  <br>
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fupdated.json&cacheSeconds=300" alt="AI usage last collected at (UTC+8)">
 </p>
 
 <details>
@@ -44,7 +51,8 @@
 
 </details>
 
-<p align="center">本机现存日志 · 每天北京时间 08:30 自动同步 · 图中费用为 API 等价估算，不代表实际扣费<br>
+<p align="center">本机现存日志 · 电脑开机且登录时每 15 分钟采集并尝试同步 · GitHub 图片缓存可能延迟显示<br>
+总量包含缓存；分项展示非缓存 token 与缓存读取 · 图中费用为 API 等价估算，不代表实际扣费<br>
 会话时长按会话累计，可能包含并行重叠；历史区间不代表真实开始使用日期<br>
 <a href="docs/profile-statistics.md">数据覆盖范围、统计口径与自动同步说明</a></p>
 
@@ -171,15 +179,6 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
 
 <div align="center">
   <table>
-    <!-- 第 1 行（原第 3 行）：Issues/PRs 和 Reactions -->
-    <tr>
-      <td align="center">
-        <img src="metrics.plugin.followup.svg" alt="Issues and PRs follow-up">
-      </td>
-      <td align="center">
-        <img src="metrics.plugin.reactions.svg" alt="Comment Reactions">
-      </td>
-    </tr>
     <!-- 第 2 行：语言统计 和 Star 仓库 -->
     <tr>
       <td align="center">

@@ -23,14 +23,15 @@ if ($InstallTask) {
     $arguments = '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "' + $PSCommandPath + '"'
     if ($Publish) { $arguments += ' -Publish' }
     $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $arguments -WorkingDirectory $repoRoot
-    $trigger = New-ScheduledTaskTrigger -Daily -At '08:30'
+    $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
+        -RepetitionInterval (New-TimeSpan -Minutes 15)
     $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -Hidden `
         -ExecutionTimeLimit (New-TimeSpan -Minutes 20) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
     $principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) `
         -LogonType Interactive -RunLevel Limited
     Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings `
         -Principal $principal -Force | Out-Null
-    Write-Output "Installed $taskName (daily at 08:30 local time while logged in; publish=$Publish)"
+    Write-Output "Installed $taskName (every 15 minutes while logged in; publish=$Publish)"
     exit 0
 }
 
@@ -63,7 +64,6 @@ try {
         $dirty = & git status --porcelain
         if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect the Git working tree.' }
         if ($dirty) { throw 'Working tree is not clean; scheduled publication skipped.' }
-        Invoke-NativeLogged 'git' @('pull', '--rebase', 'origin', 'main') 'Cannot update main; statistics were not changed.'
     }
     Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect') 'Collection failed; inspect the local log.'
     if ($Publish) {
