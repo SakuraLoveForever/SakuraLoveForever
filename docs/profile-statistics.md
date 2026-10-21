@@ -58,6 +58,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -Re
 
 任务名 SakuraLoveForever-ProfileStats；日志 %LOCALAPPDATA%/SakuraLoveForever/profile-sync.log。需要干净的 main 分支和有效 Git 凭证；工作区正在编辑或切换分支时跳过，避免处理其他工作。恢复干净的 main 后下次重试。采集失败保留旧图，推送失败保留本地提交以便下次重试。恢复后不会高频追赶每一次遗漏。
 
+定时任务通过 `wscript.exe //B` 启动 `scripts/sync-profile-background.vbs`，从进程创建时隐藏 PowerShell；统计 CLI 子进程也使用 Windows 无窗口标志。后台不显示命令行窗口或托盘图标，错误仍保留在上述日志，任务计划程序保留失败退出码。已有任务需重新安装，或只将现有任务的操作更新为此入口；保留原来的每 15 分钟触发器和登录权限。
+
+需要手动静默运行时可执行：
+
+```powershell
+wscript.exe //B //Nologo scripts/sync-profile-background.vbs -Publish
+```
+
 GitHub 的 Profile statistics checks 工作流运行测试并检查徽章数据一致性。GitHub 托管 runner 无法读取电脑日志，AI 用量由上述本机任务采集。README 的 Shields/GitHub 图片有缓存，新提交不会保证立刻出现在页面。
 
 ## 验证

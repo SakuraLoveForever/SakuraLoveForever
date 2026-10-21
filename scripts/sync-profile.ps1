@@ -20,9 +20,12 @@ if ($RemoveTask) {
 }
 
 if ($InstallTask) {
-    $arguments = '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "' + $PSCommandPath + '"'
+    $launcher = Join-Path $PSScriptRoot 'sync-profile-background.vbs'
+    if (-not (Test-Path -LiteralPath $launcher)) { throw 'Background launcher is missing.' }
+    $arguments = '//B //Nologo "' + $launcher + '"'
     if ($Publish) { $arguments += ' -Publish' }
-    $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $arguments -WorkingDirectory $repoRoot
+    $action = New-ScheduledTaskAction -Execute (Join-Path $env:SystemRoot 'System32\wscript.exe') `
+        -Argument $arguments -WorkingDirectory $repoRoot
     $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
         -RepetitionInterval (New-TimeSpan -Minutes 15)
     $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -Hidden `

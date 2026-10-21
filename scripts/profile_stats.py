@@ -115,7 +115,8 @@ def collect(args):
         command = [npx, "--yes", f"tokscale@{VERSION}", *arguments]
         if args.home and arguments[0] != "config":
             command.extend(["--home", str(args.home)])
-        result = subprocess.run(command, env=environment, capture_output=True, timeout=300)
+        result = subprocess.run(command, env=environment, capture_output=True, timeout=300,
+                                creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
         diagnostics = result.stderr.decode("utf-8", errors="replace").strip()
         if result.returncode:
             raise ValueError(f"Tokscale {arguments[0]} failed ({result.returncode}): {diagnostics[-4000:]}")
