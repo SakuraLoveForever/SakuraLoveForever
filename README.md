@@ -142,7 +142,7 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
       </a>
       <td align="center">
         <a href="https://git.io/streak-stats">
-          <img src="https://streak-stats.demolab.com?user=SakuraLoveForever&theme=tokyonight&hide_border=true&short_numbers=true" alt="GitHub Streak">
+          <img src="https://github-readme-streak-stats.herokuapp.com?user=SakuraLoveForever&theme=tokyonight&hide_border=true&short_numbers=true" alt="GitHub Streak">
         </a>
       </a>
     </tr>
