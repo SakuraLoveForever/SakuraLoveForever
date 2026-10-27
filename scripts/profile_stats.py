@@ -17,7 +17,7 @@ TOOLS = {"codex": ("Codex", "#7aa2f7"), "dsh": ("DeepSeek Harness", "#bb9af7")}
 ALIYUN = ("aliyun-bailian", "DeepSeek (Bailian)", "#ff9e64")
 FIELDS = {"input": "input", "output": "output", "cache_read": "cacheRead",
           "cache_write": "cacheWrite", "reasoning": "reasoning"}
-LABELS = {"tokens": "Tokens"}
+LABELS = {"tokens": "Tokens", "time": "使用时长"}
 
 
 def number(value):
@@ -130,13 +130,15 @@ def badge_values(tool):
 
 def render_badges(root, data):
     # Shields.io renders its existing endpoint template; no custom SVG/layout.
-    # One total per tool; no cache split, no per-tool session clock.
+    # Per tool: a token total and a session clock; no cache split.
     for client, (name, color) in TOOLS.items():
-        total = badge_values(data["tools"][client])["tokens"]
-        atomic_write(root / "data/badges" / f"{client}-tokens.json",
-                     json.dumps({"schemaVersion": 1, "label": f"{name} {LABELS['tokens']}",
-                                 "message": f"{total:,}", "color": color.lstrip("#")},
-                                indent=2) + "\n")
+        values = badge_values(data["tools"][client])
+        for key in ("tokens", "time"):
+            value = values[key]
+            atomic_write(root / "data/badges" / f"{client}-{key}.json", json.dumps({
+                "schemaVersion": 1, "label": f"{name} {LABELS[key]}",
+                "message": f"{value:,}" if type(value) is int else value,
+                "color": color.lstrip("#")}, ensure_ascii=False, indent=2) + "\n")
     provider, name, color = ALIYUN
     if provider in data.get("extra_tools", {}):
         # Only the total: the split endpoints are published in the JSON, not as badges.
