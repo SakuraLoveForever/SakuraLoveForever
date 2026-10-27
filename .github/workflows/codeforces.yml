@@ -1,0 +1,42 @@
+name: Refresh Codeforces badge
+
+on:
+  schedule:
+    - cron: '17 0 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/codeforces_badge.py'
+      - '.github/workflows/codeforces.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: codeforces-badge
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Verify badge refresh
+        run: python -m unittest discover -s tests -p test_codeforces_badge.py -v
+      - name: Refresh saved badge
+        run: python scripts/codeforces_badge.py
+      - name: Publish changed badge
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -- assets/codeforces.svg
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: refresh Codeforces badge"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
