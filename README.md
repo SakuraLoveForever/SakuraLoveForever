@@ -45,11 +45,6 @@
 
 </details>
 
-<p align="center">本机现存日志 · 电脑开机且登录时每 15 分钟采集并尝试同步 · GitHub 图片缓存可能延迟显示<br>
-总 token 包含缓存 · 图中费用为 API 等价估算，不代表实际扣费<br>
-会话时长按会话累计，可能包含并行重叠；历史区间不代表真实开始使用日期<br>
-<a href="docs/profile-statistics.md">数据覆盖范围、统计口径与自动同步说明</a></p>
-
 <!--START_SECTION:waka-->
 **🐱 My GitHub Data** 
 

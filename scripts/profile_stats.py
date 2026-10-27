@@ -57,23 +57,30 @@ def normalize(graph, client):
             "max_concurrent_sessions": number(metrics["maxConcurrentSessions"])}
 
 
-def normalize_aliyun(graph):
-    if graph["provider"] != ALIYUN[0] or graph["timezone"] != "Asia/Shanghai":
-        raise ValueError("Unexpected provider in Bailian usage export")
+def normalize_dsh(graph):
+    """Local DSH scan: all providers, all zstd frames (Tokscale misses both)."""
+    if graph["timezone"] != "Asia/Shanghai":
+        raise ValueError("Unexpected timezone in DSH usage export")
     daily = []
     for row in graph["daily"]:
         day = date.fromisoformat(row["date"]).isoformat()
         if day > datetime.now(SHANGHAI).date().isoformat():
-            raise ValueError("Unexpected future date in Bailian usage history")
-        counts = {key: number(row[key]) for key in FIELDS}
+            raise ValueError("Unexpected future date in DSH usage history")
+        # reasoning is a subset of output, so it must not be added again.
+        counts = {key: number(row.get(key, 0)) for key in FIELDS}
         tokens = number(row["tokens"])
-        if sum(counts.values()) != tokens:
-            raise ValueError("Token breakdown does not match Bailian daily total")
+        # reasoning is already inside output for DSH usage, unlike Tokscale's rows.
+        if sum(v for k, v in counts.items() if k != "reasoning") > tokens:
+            raise ValueError("Token breakdown exceeds the DSH daily total")
         daily.append({"date": day, "tokens": tokens, **counts, "active_ms": 0})
     daily.sort(key=lambda row: row["date"])
     if len({row["date"] for row in daily}) != len(daily):
-        raise ValueError("Duplicate date in Bailian usage history")
-    return {"daily": daily, "active_ms": 0}
+        raise ValueError("Duplicate date in DSH usage history")
+    providers = {name: number(entry["tokens"]) for name, entry in graph["providers"].items()}
+    if sum(providers.values()) != sum(row["tokens"] for row in daily):
+        raise ValueError("DSH provider total does not match the daily total")
+    # Bailian is not DSH-branded usage: it is billed by Alibaba Cloud.
+    return {"daily": daily, "active_ms": 0, "providers": providers}
 
 
 def check_history(previous, current):
@@ -140,9 +147,9 @@ def render_badges(root, data):
                 "message": f"{value:,}" if type(value) is int else value,
                 "color": color.lstrip("#")}, ensure_ascii=False, indent=2) + "\n")
     provider, name, color = ALIYUN
+    # Only the total: the split endpoints are published in the JSON, not as badges.
     if provider in data.get("extra_tools", {}):
-        # Only the total: the split endpoints are published in the JSON, not as badges.
-        total = badge_values(data["extra_tools"][provider])["tokens"]
+        total = data["extra_tools"][provider]["total"]
         atomic_write(root / "data/badges/aliyun-tokens.json", json.dumps({
             "schemaVersion": 1, "label": f"{name} {LABELS['tokens']}", "message": f"{total:,}",
             "color": color.lstrip("#")}, indent=2) + "\n")
@@ -152,15 +159,15 @@ def render_badges(root, data):
     }, indent=2) + "\n")
 
 
-def collect_aliyun(args, temporary):
-    """Node.js (bundled with the Tokscale toolchain) reads the same local DSH logs."""
-    path = args.import_dir / "aliyun-bailian.json" if args.import_dir else None
+def collect_dsh(args, temporary):
+    """Node reads the DSH logs itself: Tokscale decodes only the first zstd frame."""
+    path = args.import_dir / "dsh-usage.json" if args.import_dir else None
     if not path:
         node = shutil.which("node")
         if not node:
-            raise ValueError("Node.js is required to aggregate Alibaba Bailian usage")
-        path = Path(temporary) / "aliyun-bailian.json"
-        script = Path(__file__).resolve().parent / "collect-aliyun-usage.js"
+            raise ValueError("Node.js is required to aggregate DSH usage")
+        path = Path(temporary) / "dsh-usage.json"
+        script = Path(__file__).resolve().parent / "collect-dsh-usage.js"
         command = [node, str(script), "--out", str(path)]
         if args.home:
             command.append(str(args.home))
@@ -169,14 +176,20 @@ def collect_aliyun(args, temporary):
                                 creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
         if result.returncode:
             diagnostics = result.stderr.decode("utf-8", errors="replace").strip()
-            raise ValueError(f"Bailian usage collection failed ({result.returncode}): {diagnostics[-4000:]}")
+            raise ValueError(f"DSH usage collection failed ({result.returncode}): {diagnostics[-4000:]}")
     if not path.exists():
         return {}
-    graph = json.loads(path.read_text(encoding="utf-8-sig"))
-    return {ALIYUN[0]: normalize_aliyun(graph)}
+    return normalize_dsh(json.loads(path.read_text(encoding="utf-8-sig")))
 
 
 def collect(args):
+    try:
+        return build_snapshot(args)
+    except (ValueError, KeyError, OSError, subprocess.SubprocessError) as error:
+        raise SystemExit(f"Profile stats update failed: {error}") from None
+
+
+def build_snapshot(args):
     config = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / ".local/share"))) / "SakuraLoveForever/usage-config"
     environment = dict(os.environ, TOKSCALE_CONFIG_DIR=str(config), TZ="Asia/Shanghai", NO_COLOR="1")
     npx = shutil.which("npx.cmd" if os.name == "nt" else "npx")
@@ -211,22 +224,36 @@ def collect(args):
         atomic_write(settings_path, json.dumps(settings, indent=2) + "\n")
 
     with tempfile.TemporaryDirectory(prefix="sakura-usage-") as temporary:
-        for client in TOOLS:
-            if args.import_dir:
-                path = args.import_dir / f"{client}.json"
-            else:
-                path = Path(temporary) / f"{client}.json"
-                run(["graph", "--client", client, "--output", str(path), "--no-spinner"])
-            tools[client] = normalize(json.loads(path.read_text(encoding="utf-8-sig")), client)
-        data = {"schema_version": 1, "timezone": "Asia/Shanghai", "source": f"tokscale@{VERSION}",
-                "updated_at": datetime.now(SHANGHAI).isoformat(timespec="seconds"), "tools": tools,
-                "extra_tools": collect_aliyun(args, temporary)}
+        # Codex comes from Tokscale; DSH is parsed locally because Tokscale drops
+        # frames of long sessions and every provider it cannot price.
+        if args.import_dir:
+            codex_path = args.import_dir / "codex.json"
+        else:
+            codex_path = Path(temporary) / "codex.json"
+            run(["graph", "--client", "codex", "--output", str(codex_path), "--no-spinner"])
+            # The DSH session clock is the one thing still taken from Tokscale: it derives
+            # it from message timing, which the local token scan does not reconstruct.
+            run(["graph", "--client", "dsh", "--output", str(Path(temporary) / "dsh.json"), "--no-spinner"])
+        tools = {"codex": normalize(json.loads(codex_path.read_text(encoding="utf-8-sig")), "codex")}
+        dsh = collect_dsh(args, temporary)
+        providers = dsh.get("providers", {})
+        tools["dsh"] = {key: value for key, value in dsh.items() if key != "providers"}
+        # The session clock still comes from Tokscale: it derives it from message timing,
+        # which this local scan does not reconstruct.
+        clock_path = args.import_dir / "dsh.json" if args.import_dir else Path(temporary) / "dsh.json"
+        clock = json.loads(clock_path.read_text(encoding="utf-8-sig"))
+        tools["dsh"]["active_ms"] = number(clock["timeMetrics"]["totalActiveTimeMs"])
+        data = {"schema_version": 1, "timezone": "Asia/Shanghai", "source": f"tokscale@{VERSION} + DSH logs",
+                "updated_at": datetime.now(SHANGHAI).isoformat(timespec="seconds"), "tools": tools}
+        # Bailian is billed by Alibaba Cloud, so only its own total is published apart.
+        data["extra_tools"] = ({ALIYUN[0]: {**tools["dsh"], "total": providers[ALIYUN[0]]}}
+                               if providers.get(ALIYUN[0]) else {})
         previous = args.root / "data/ai-usage.json"
         if previous.exists() and not args.allow_decrease:
             check_history(json.loads(previous.read_text(encoding="utf-8")), data)
         if not args.import_dir:
             image = Path(temporary) / "ai-usage.png"
-            run(["wrapped", "--client", "codex,dsh", "--clients", "--year",
+            run(["wrapped", "--client", "codex", "--clients", "--year",
                  str(datetime.now(SHANGHAI).year), "--output", str(image), "--no-spinner"])
             if image.read_bytes()[:8] != b"\x89PNG\r\n\x1a\n":
                 raise ValueError("Tokscale did not produce a valid PNG")
@@ -242,10 +269,10 @@ def collect(args):
         coverage = f"{days[0]['date']} to {days[-1]['date']}" if days else "no usage recorded"
         print(f'{TOOLS[client][0]}: {sum(row["tokens"] for row in days):,} tokens; '
               f'{duration(tool["active_ms"])} active session time; {coverage}')
-    for provider, tool in data["extra_tools"].items():
+    for provider, tool in data.get("extra_tools", {}).items():
         days = tool["daily"]
         coverage = f"{days[0]['date']} to {days[-1]['date']}" if days else "no usage recorded"
-        print(f'{ALIYUN[1]}: {sum(row["tokens"] for row in days):,} tokens; {coverage}')
+        print(f'{ALIYUN[1]}: {tool["total"]:,} tokens; {coverage}')
 
 
 def main():
@@ -254,7 +281,8 @@ def main():
     commands = parser.add_subparsers(dest="command", required=True)
     local = commands.add_parser("collect", help="Tokscale native scan + Wrapped, and Shields endpoint data")
     local.add_argument("--home", type=Path, help="Alternate home directory containing .codex/.dsh")
-    local.add_argument("--import-home", type=Path, help="Extra user home whose DSH logs hold Bailian usage")
+    local.add_argument("--import-home", action="append", type=Path,
+                       help="Extra user home whose DSH logs hold more usage")
     local.add_argument("--import-dir", type=Path, help="Offline codex.json/dsh.json exports; update badges only")
     local.add_argument("--allow-decrease", action="store_true", help="Accept a reviewed historical correction")
     commands.add_parser("render", help="Refresh Shields endpoint JSON from existing aggregate data")
