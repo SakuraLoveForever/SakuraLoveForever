@@ -71,11 +71,14 @@ try {
     Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect') 'Collection failed; inspect the local log.'
     if ($Publish) {
         & git add -- data/ai-usage.json data/badges assets/ai-usage.png
+        # The Bailian snapshot only exists after the local collector has run.
+        if (Test-Path -LiteralPath 'data/aliyun-usage.json') {
+            & git add -- data/aliyun-usage.json
+        }
         if ($LASTEXITCODE -ne 0) { throw 'Cannot stage aggregate assets.' }
         & git diff --cached --quiet
         if ($LASTEXITCODE -eq 1) {
-            Invoke-NativeLogged 'git' @('commit', '-m', 'chore: refresh local AI usage [skip ci]', '--',
-                'data/ai-usage.json', 'data/badges', 'assets/ai-usage.png') 'Cannot commit aggregate assets.'
+            Invoke-NativeLogged 'git' @('commit', '-m', 'chore: refresh local AI usage [skip ci]') 'Cannot commit aggregate assets.'
         } elseif ($LASTEXITCODE -ne 0) { throw 'Cannot inspect staged changes.' }
         # Existing cloud metrics jobs own different files, so their commits can be rebased.
         try {

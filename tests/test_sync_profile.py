@@ -18,7 +18,7 @@ class PublishTests(unittest.TestCase):
             scripts = repo / "scripts"
             scripts.mkdir()
             source = Path(__file__).resolve().parents[1]
-            for name in ("sync-profile.ps1", "profile_stats.py"):
+            for name in ("sync-profile.ps1", "profile_stats.py", "collect-aliyun-usage.js"):
                 shutil.copyfile(source / "scripts" / name, scripts / name)
             (repo / ".gitignore").write_text("__pycache__/\n*.tmp\n")
 

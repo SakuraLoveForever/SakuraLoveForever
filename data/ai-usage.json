@@ -2,7 +2,7 @@
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
   "source": "tokscale@4.20.0",
-  "updated_at": "2026-10-23T03:09:31+08:00",
+  "updated_at": "2026-10-27T12:19:27+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -747,6 +747,103 @@
       "active_ms": 103670380,
       "sessions": 208,
       "max_concurrent_sessions": 4
+    }
+  },
+  "extra_tools": {
+    "aliyun-bailian": {
+      "daily": [
+        {
+          "date": "2026-10-19",
+          "tokens": 113798,
+          "input": 10706,
+          "output": 2740,
+          "cache_read": 100352,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-20",
+          "tokens": 8067229,
+          "input": 615283,
+          "output": 77098,
+          "cache_read": 7374848,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-21",
+          "tokens": 61098726,
+          "input": 987531,
+          "output": 432475,
+          "cache_read": 59678720,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-22",
+          "tokens": 17445940,
+          "input": 431351,
+          "output": 144701,
+          "cache_read": 16869888,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-23",
+          "tokens": 46252846,
+          "input": 2273007,
+          "output": 542271,
+          "cache_read": 43437568,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-24",
+          "tokens": 152377199,
+          "input": 5495908,
+          "output": 1712395,
+          "cache_read": 145168896,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-25",
+          "tokens": 135612891,
+          "input": 5491274,
+          "output": 1310609,
+          "cache_read": 128811008,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-26",
+          "tokens": 315703623,
+          "input": 8918379,
+          "output": 2283996,
+          "cache_read": 304501248,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-10-27",
+          "tokens": 545033904,
+          "input": 7691574,
+          "output": 1513850,
+          "cache_read": 535828480,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        }
+      ],
+      "active_ms": 0
     }
   }
 }
