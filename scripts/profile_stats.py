@@ -140,15 +140,11 @@ def render_badges(root, data):
                          json.dumps(badge, ensure_ascii=False, indent=2) + "\n")
     provider, name, color = ALIYUN
     if provider in data.get("extra_tools", {}):
-        values = badge_values(data["extra_tools"][provider])
-        # The same generations Tokscale counts for DSH: no session clock, so no time badge.
-        for key_name, value in values.items():
-            if key_name == "time":
-                continue
-            badge = {"schemaVersion": 1, "label": f"{name} {LABELS[key_name]}",
-                     "message": f"{value:,}", "color": color.lstrip("#")}
-            atomic_write(root / "data/badges" / f"aliyun-{key_name}.json",
-                         json.dumps(badge, ensure_ascii=False, indent=2) + "\n")
+        # Only the total: the split endpoints are published in the JSON, not as badges.
+        total = badge_values(data["extra_tools"][provider])["tokens"]
+        atomic_write(root / "data/badges/aliyun-tokens.json", json.dumps({
+            "schemaVersion": 1, "label": f"{name} {LABELS['tokens']}", "message": f"{total:,}",
+            "color": color.lstrip("#")}, indent=2) + "\n")
     atomic_write(root / "data/badges/updated.json", json.dumps({
         "schemaVersion": 1, "label": "AI usage updated", "message": data["updated_at"],
         "color": "7aa2f7",
