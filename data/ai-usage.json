@@ -2,7 +2,7 @@
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
   "source": "tokscale@4.20.0 + DSH logs",
-  "updated_at": "2026-10-28T02:09:45+08:00",
+  "updated_at": "2026-10-28T03:09:41+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -595,10 +595,20 @@
           "cache_write": 0,
           "reasoning": 144506,
           "active_ms": 19221431
+        },
+        {
+          "date": "2026-10-28",
+          "tokens": 11543952,
+          "input": 882922,
+          "output": 26667,
+          "cache_read": 10628096,
+          "cache_write": 0,
+          "reasoning": 6267,
+          "active_ms": 1374812
         }
       ],
-      "active_ms": 665644253,
-      "sessions": 1189,
+      "active_ms": 667019065,
+      "sessions": 1194,
       "max_concurrent_sessions": 6
     },
     "dsh": {
@@ -845,16 +855,16 @@
         },
         {
           "date": "2026-10-28",
-          "tokens": 64225609,
-          "input": 1446544,
-          "output": 294073,
-          "cache_read": 62484992,
+          "tokens": 100042726,
+          "input": 2207722,
+          "output": 498172,
+          "cache_read": 97336832,
           "cache_write": 0,
           "reasoning": 0,
           "active_ms": 0
         }
       ],
-      "active_ms": 246850685
+      "active_ms": 253557646
     }
   },
   "extra_tools": {
@@ -1102,17 +1112,17 @@
         },
         {
           "date": "2026-10-28",
-          "tokens": 64225609,
-          "input": 1446544,
-          "output": 294073,
-          "cache_read": 62484992,
+          "tokens": 100042726,
+          "input": 2207722,
+          "output": 498172,
+          "cache_read": 97336832,
           "cache_write": 0,
           "reasoning": 0,
           "active_ms": 0
         }
       ],
-      "active_ms": 246850685,
-      "total": 1509418299
+      "active_ms": 253557646,
+      "total": 1545235416
     }
   }
 }
