@@ -28,11 +28,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-tokens.json&cacheSeconds=300" alt="Codex tokens">&nbsp;
-  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fcodex-time.json&cacheSeconds=300" alt="Codex time">&nbsp;
-  <br>
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-tokens.json&cacheSeconds=300" alt="DeepSeek Harness tokens">&nbsp;
-  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Fdsh-time.json&cacheSeconds=300" alt="DeepSeek Harness time">&nbsp;
-  <br>
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Faliyun-tokens.json&cacheSeconds=300" alt="DeepSeek (Bailian) tokens">&nbsp;
 </p>
 
