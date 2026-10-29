@@ -135,8 +135,8 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
   <table>
     <tr>
       <td align="center">
-        <a href="https://github.com/anuraghazra/github-readme-stats">
-          <img src="https://github-readme-stats.vercel.app/api?username=SakuraLoveForever&theme=tokyonight&hide_border=true" alt="GitHub Stats">
+        <a href="https://github.com/stats-organization/github-stats-extended">
+          <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&theme=tokyonight&hide_border=true" alt="GitHub Stats">
         </a>
       </a>
       <td align="center">
@@ -147,8 +147,8 @@ TeX                      1 repo              ⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜�
     </tr>
     <tr>
       <td align="center" width="50%">
-        <a href="https://github.com/anuraghazra/github-readme-stats">
-          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SakuraLoveForever&layout=pie&theme=tokyonight&hide_border=true" alt="Top Langs">
+        <a href="https://github.com/stats-organization/github-stats-extended">
+          <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=SakuraLoveForever&layout=pie&theme=tokyonight&hide_border=true" alt="Top Langs">
         </a>
       </a>
       <td align="center" width="50%">
