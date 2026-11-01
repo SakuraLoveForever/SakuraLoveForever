@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """End-to-end checks with small, hand-counted Tokscale and DSH exports (no private logs)."""
+import importlib.util
 import json
 import subprocess
 import sys
@@ -8,6 +9,9 @@ import unittest
 from pathlib import Path
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "profile_stats.py"
+SPEC = importlib.util.spec_from_file_location("profile_stats", SCRIPT)
+PROFILE_STATS = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(PROFILE_STATS)
 
 
 def export(client, tokens=325):
@@ -49,6 +53,31 @@ class ProfileStatsTests(unittest.TestCase):
         (self.imports / "codex.json").write_text(json.dumps(export("codex")))
         (self.imports / "dsh.json").write_text(json.dumps(export("dsh")))
         self.write_dsh()
+
+    def test_scan_paths_include_packy_history_without_replacing_existing_roots(self):
+        home = self.root / "home"
+        roaming = home / "AppData/Roaming"
+        paths = [home / name / folder for name in (".codex", ".codex-packy")
+                 for folder in ("sessions", "archived_sessions")]
+        custom = self.root / "custom-codex"
+        paths.append(custom / "sessions")
+        desktop = roaming / "dsh-desktop/harness/sessions"
+        for path in [*paths, desktop]:
+            path.mkdir(parents=True)
+        settings = {"scanner": {"extraScanPaths": {"codex": ["existing-history"],
+                                                   "dsh": ["existing-dsh"]}}}
+
+        PROFILE_STATS.configure_scan_paths(settings, home, roaming, custom)
+        PROFILE_STATS.configure_scan_paths(settings, home, roaming, custom)
+
+        extra = settings["scanner"]["extraScanPaths"]
+        self.assertEqual(extra["codex"], ["existing-history", *map(str, paths)])
+        self.assertEqual(extra["dsh"], ["existing-dsh", str(desktop)])
+
+    def test_missing_packy_directories_are_not_added_to_scan_paths(self):
+        settings = {}
+        PROFILE_STATS.configure_scan_paths(settings, self.root, self.root / "roaming")
+        self.assertEqual(settings["scanner"]["extraScanPaths"], {"codex": [], "dsh": []})
 
     def write_dsh(self, days=(("2026-10-01", 320),), bailian=5):
         providers = {"deepseek-official": {"tokens": sum(t for _, t in days) - bailian},

@@ -189,6 +189,24 @@ def collect(args):
         raise SystemExit(f"Profile stats update failed: {error}") from None
 
 
+def configure_scan_paths(settings, home, roaming, codex_home=None):
+    codex_roots = [home / ".codex", home / ".codex-packy"]
+    if codex_home:
+        codex_roots.append(Path(codex_home))
+    candidates = {
+        "codex": [root / folder for root in codex_roots
+                  for folder in ("sessions", "archived_sessions")],
+        "dsh": [roaming / "dsh-desktop/harness/sessions",
+                roaming / "@deepseek-ai/dsh-desktop/harness/sessions"],
+    }
+    extra = settings.setdefault("scanner", {}).setdefault("extraScanPaths", {})
+    for client, paths in candidates.items():
+        roots = extra.setdefault(client, [])
+        for path in paths:
+            if path.is_dir() and str(path) not in roots:
+                roots.append(str(path))
+
+
 def build_snapshot(args):
     config = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / ".local/share"))) / "SakuraLoveForever/usage-config"
     environment = dict(os.environ, TOKSCALE_CONFIG_DIR=str(config), TZ="Asia/Shanghai", NO_COLOR="1")
@@ -211,16 +229,11 @@ def build_snapshot(args):
         if not npx:
             raise ValueError("Node.js/npm is required to run the pinned Tokscale CLI")
         run(["config", "set", "timezone", "Asia/Shanghai"])
-        # DSH desktop uses a different home from the CLI. Let Tokscale scan and dedupe it.
         roaming = args.home / "AppData/Roaming" if args.home else Path(os.environ.get("APPDATA", str(Path.home() / "AppData/Roaming")))
-        candidates = [roaming / "dsh-desktop/harness/sessions",
-                      roaming / "@deepseek-ai/dsh-desktop/harness/sessions"]
         settings_path = config / "settings.json"
         settings = json.loads(settings_path.read_text(encoding="utf-8"))
-        extra = settings.setdefault("scanner", {}).setdefault("extraScanPaths", {}).setdefault("dsh", [])
-        for candidate in candidates:
-            if candidate.is_dir() and str(candidate) not in extra:
-                extra.append(str(candidate))
+        configure_scan_paths(settings, args.home or Path.home(), roaming,
+                             os.environ.get("CODEX_HOME") if not args.home else None)
         atomic_write(settings_path, json.dumps(settings, indent=2) + "\n")
 
     with tempfile.TemporaryDirectory(prefix="sakura-usage-") as temporary:

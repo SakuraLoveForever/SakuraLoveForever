@@ -13,6 +13,7 @@ scripts/profile_stats.py 只调用现成 CLI、检查输出和历史是否下降
 首次扫描遗漏了 DeepSeek 桌面端的独立目录，现已补充给 Tokscale 的 scanner.extraScanPaths.dsh：
 
 - Codex：默认用户目录 .codex/sessions 和 .codex/archived_sessions。现存可统计记录从 **2026-08-20** 开始。
+- PackyCode：自动补扫同一用户的 .codex-packy/sessions、.codex-packy/archived_sessions，以及当前 CODEX_HOME 下存在的会话目录。token 与会话活跃时长合并到 Codex 统计，定时任务不依赖 PackyCode 启动器的环境变量；重复日志交给 Tokscale 去重。
 - DeepSeek Harness CLI：.dsh/sessions。
 - DeepSeek Harness 桌面端：%APPDATA%/dsh-desktop/harness/sessions，并探测 %APPDATA%/@deepseek-ai/dsh-desktop/harness/sessions。合并后现存可统计记录从 **2026-09-10** 开始。
 
@@ -29,6 +30,7 @@ scripts/profile_stats.py 只调用现成 CLI、检查输出和历史是否下降
 - data/ai-usage.json 只保存按工具、日期汇总的数值，不包含提示词、回复、目录、会话 ID 或凭证。原生 Wrapped 会显示模型名称。Tokscale 临时 JSON 导出在读取后删除；不调用 login、submit 或订阅额度接口。
 - 历史 token 或每日活跃时长下降会使采集报错并保留旧结果。先恢复日志；只有人工核对过的修正才使用 --allow-decrease。
 - WakaTime 的编辑器统计保留，旧 Code Time、AI Code Time 和周 AI 区块已禁用，避免与本地工具统计混淆。
+- PackyCode 的独立 Codex 配置也启用了 codex-cli-wakatime 插件，共用 ~/.wakatime.cfg 的账号。WakaTime 记录为 Codex 的 AI Coding 活动；本仓库的 Codex token/时间徽章由上述本地日志扫描生成，不能用 WakaTime 插件是否安装来判断徽章是否包含 PackyCode。
 
 ## 手动更新
 
