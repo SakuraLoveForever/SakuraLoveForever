@@ -2,7 +2,7 @@
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
   "source": "tokscale@4.20.0 + DSH logs",
-  "updated_at": "2026-10-30T02:37:19+08:00",
+  "updated_at": "2026-11-02T05:09:42+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -618,17 +618,47 @@
         },
         {
           "date": "2026-10-30",
-          "tokens": 79005583,
-          "input": 2968123,
-          "output": 199001,
-          "cache_read": 75734528,
+          "tokens": 350194519,
+          "input": 21425965,
+          "output": 926004,
+          "cache_read": 327382400,
           "cache_write": 0,
-          "reasoning": 103931,
-          "active_ms": 15533345
+          "reasoning": 460150,
+          "active_ms": 74189066
+        },
+        {
+          "date": "2026-10-31",
+          "tokens": 121602643,
+          "input": 25171352,
+          "output": 375319,
+          "cache_read": 95948182,
+          "cache_write": 0,
+          "reasoning": 107790,
+          "active_ms": 31819280
+        },
+        {
+          "date": "2026-11-01",
+          "tokens": 74985284,
+          "input": 2522415,
+          "output": 187632,
+          "cache_read": 72217728,
+          "cache_write": 0,
+          "reasoning": 57509,
+          "active_ms": 27989675
+        },
+        {
+          "date": "2026-11-02",
+          "tokens": 40097074,
+          "input": 956795,
+          "output": 90142,
+          "cache_read": 38996096,
+          "cache_write": 0,
+          "reasoning": 54041,
+          "active_ms": 6191109
         }
       ],
-      "active_ms": 768009215,
-      "sessions": 1341,
+      "active_ms": 892665000,
+      "sessions": 1487,
       "max_concurrent_sessions": 6
     },
     "dsh": {
@@ -892,9 +922,39 @@
           "cache_write": 0,
           "reasoning": 0,
           "active_ms": 0
+        },
+        {
+          "date": "2026-10-30",
+          "tokens": 7510895,
+          "input": 176152,
+          "output": 83159,
+          "cache_read": 7251584,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-11-01",
+          "tokens": 1113787,
+          "input": 118992,
+          "output": 10347,
+          "cache_read": 984448,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-11-02",
+          "tokens": 770093,
+          "input": 43758,
+          "output": 12735,
+          "cache_read": 713600,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
         }
       ],
-      "active_ms": 265910230
+      "active_ms": 268284901
     }
   },
   "extra_tools": {
@@ -1159,9 +1219,39 @@
           "cache_write": 0,
           "reasoning": 0,
           "active_ms": 0
+        },
+        {
+          "date": "2026-10-30",
+          "tokens": 7510895,
+          "input": 176152,
+          "output": 83159,
+          "cache_read": 7251584,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-11-01",
+          "tokens": 1113787,
+          "input": 118992,
+          "output": 10347,
+          "cache_read": 984448,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
+        },
+        {
+          "date": "2026-11-02",
+          "tokens": 770093,
+          "input": 43758,
+          "output": 12735,
+          "cache_read": 713600,
+          "cache_write": 0,
+          "reasoning": 0,
+          "active_ms": 0
         }
       ],
-      "active_ms": 265910230,
+      "active_ms": 268284901,
       "total": 1594213088
     }
   }
