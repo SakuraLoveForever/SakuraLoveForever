@@ -2,7 +2,7 @@
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
   "source": "tokscale@4.20.0 + DSH logs",
-  "updated_at": "2026-11-02T19:09:59+08:00",
+  "updated_at": "2026-11-02T20:10:27+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -648,17 +648,17 @@
         },
         {
           "date": "2026-11-02",
-          "tokens": 115610219,
-          "input": 3089076,
-          "output": 291131,
-          "cache_read": 112071168,
+          "tokens": 131156960,
+          "input": 3803287,
+          "output": 328105,
+          "cache_read": 126846720,
           "cache_write": 0,
-          "reasoning": 158844,
-          "active_ms": 21690340
+          "reasoning": 178848,
+          "active_ms": 24551388
         }
       ],
-      "active_ms": 908164231,
-      "sessions": 1507,
+      "active_ms": 911025279,
+      "sessions": 1509,
       "max_concurrent_sessions": 6
     },
     "dsh": {
