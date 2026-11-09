@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="402" height="168" viewBox="0 0 402 168" role="img" aria-labelledby="title">
+  <title id="title">Mai Dark · Doki Theme</title>
+  <!-- Doki Master Theme palette at 4467240b45837ff473903d572790112fc2caa8ca, MIT. See LICENSE.md. -->
+  <rect width="402" height="168" rx="14" fill="#25254B"/>
+  <rect x=".5" y=".5" width="401" height="167" rx="13.5" fill="none" stroke="#BBBBBB" stroke-opacity=".33"/>
+  <rect x="12" y="12" width="378" height="95" rx="8" fill="#272750"/>
+  <path d="M23 97h44" stroke="#FEE3CF" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(349 66)">
+    <circle r="29" fill="none" stroke="#757CCA" stroke-opacity=".65"/>
+    <ellipse rx="34" ry="12" fill="none" stroke="#FEE3CF" stroke-opacity=".8" transform="rotate(-30)"/>
+    <path d="M0-18Q2-2 18 0 2 2 0 18-2 2-18 0-2-2 0-18Z" fill="#757CCA"/>
+  </g>
+  <g fill="#BBBBBB" font-family="ui-monospace, Consolas, monospace" font-size="11">
+    <text x="23" y="35" letter-spacing="1.5">SAKURA / DOKI THEMES</text>
+    <text x="379" y="35" text-anchor="end">DARK · 03/11</text>
+    <rect x="23" y="121" width="64" height="14" rx="3" fill="#25254B" stroke="#BBBBBB" stroke-opacity=".35"/>
+    <text x="23" y="151">#25254B</text>
+    <rect x="96" y="121" width="64" height="14" rx="3" fill="#272750" stroke="#BBBBBB" stroke-opacity=".35"/>
+    <text x="96" y="151">#272750</text>
+    <rect x="169" y="121" width="64" height="14" rx="3" fill="#BBBBBB" stroke="#BBBBBB" stroke-opacity=".35"/>
+    <text x="169" y="151">#BBBBBB</text>
+    <rect x="242" y="121" width="64" height="14" rx="3" fill="#FEE3CF" stroke="#BBBBBB" stroke-opacity=".35"/>
+    <text x="242" y="151">#FEE3CF</text>
+    <rect x="315" y="121" width="64" height="14" rx="3" fill="#757CCA" stroke="#BBBBBB" stroke-opacity=".35"/>
+    <text x="315" y="151">#757CCA</text>
+  </g>
+  <text x="23" y="78" fill="#BBBBBB" font-family="system-ui, Segoe UI, sans-serif" font-size="28" font-weight="700">Mai Dark</text>
+</svg>

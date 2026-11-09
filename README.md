@@ -18,6 +18,122 @@
   </a>
 </p>
 
+## Doki 主题
+
+点击主题名即可切换角色图和配色。
+
+<details name="doki-profile-theme" open>
+<summary>Emilia Dark</summary>
+
+<p align="center">
+  <img src="assets/doki/emilia-dark.svg" width="402" height="168" alt="Emilia Dark 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/emilia/dark/emilia_dark.png" width="100" height="150" alt="Emilia Dark 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Hiro x Zero Two</summary>
+
+<p align="center">
+  <img src="assets/doki/hiro-x-zero-two.svg" width="402" height="168" alt="Hiro x Zero Two 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/hiroXZeroTwo/dark/hiro_x_zero_two.png" width="150" height="84" alt="Hiro x Zero Two 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Mai Dark</summary>
+
+<p align="center">
+  <img src="assets/doki/mai-dark.svg" width="402" height="168" alt="Mai Dark 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/bunnySenpai/mai/dark/mai_dark.png" width="119" height="150" alt="Mai Dark 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Ram</summary>
+
+<p align="center">
+  <img src="assets/doki/ram.svg" width="402" height="168" alt="Ram 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/ram/ram.png" width="85" height="150" alt="Ram 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Rem</summary>
+
+<p align="center">
+  <img src="assets/doki/rem.svg" width="402" height="168" alt="Rem 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/rem/rem.png" width="86" height="150" alt="Rem 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Beatrice</summary>
+
+<p align="center">
+  <img src="assets/doki/beatrice.svg" width="402" height="168" alt="Beatrice 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/beatrice/beatrice.png" width="150" height="125" alt="Beatrice 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Emilia Light</summary>
+
+<p align="center">
+  <img src="assets/doki/emilia-light.svg" width="402" height="168" alt="Emilia Light 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/emilia/light/emilia_light.png" width="99" height="150" alt="Emilia Light 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Mai Light</summary>
+
+<p align="center">
+  <img src="assets/doki/mai-light.svg" width="402" height="168" alt="Mai Light 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/bunnySenpai/mai/light/mai_light.png" width="119" height="150" alt="Mai Light 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Tomori Nao</summary>
+
+<p align="center">
+  <img src="assets/doki/tomori-nao.svg" width="402" height="168" alt="Tomori Nao 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/charlotte/nao/light/nao_light.png" width="150" height="148" alt="Tomori Nao 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Zero Two Light Lily</summary>
+
+<p align="center">
+  <img src="assets/doki/zero-two-light-lily.svg" width="402" height="168" alt="Zero Two Light Lily 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/zeroTwo/lily/zero_two_lily.png" width="150" height="122" alt="Zero Two Light Lily 的 Doki 角色贴图">
+</p>
+
+</details>
+
+<details name="doki-profile-theme">
+<summary>Zero Two Dark Rose</summary>
+
+<p align="center">
+  <img src="assets/doki/zero-two-dark-rose.svg" width="402" height="168" alt="Zero Two Dark Rose 的 Doki 配色卡">
+  <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/zeroTwo/rose/zero_two_rose.png" width="150" height="122" alt="Zero Two Dark Rose 的 Doki 角色贴图">
+</p>
+
+</details>
+
+角色贴图与配色来自 [Doki Theme](https://doki-theme.unthrottled.io/themes)。[配色许可](assets/doki/LICENSE.md)
+
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/refs/heads/output/github-contribution-grid-snake-dark.svg">
