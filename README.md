@@ -20,14 +20,20 @@
 
 ## Doki 主题
 
-点击主题名即可切换角色图和配色。
+点击主题名，用不同的角色和配色查看我的 GitHub 贡献与项目。
 
 <details name="doki-profile-theme" open>
 <summary>Emilia Dark</summary>
 
 <p align="center">
-  <img src="assets/doki/emilia-dark.svg" width="402" height="168" alt="Emilia Dark 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=4e3162&amp;title_color=dadada&amp;text_color=dadada&amp;icon_color=f667ff" width="400" height="195" alt="GitHub 贡献概览（Emilia Dark）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/emilia/dark/emilia_dark.png" width="100" height="150" alt="Emilia Dark 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -36,8 +42,14 @@
 <summary>Hiro x Zero Two</summary>
 
 <p align="center">
-  <img src="assets/doki/hiro-x-zero-two.svg" width="402" height="168" alt="Hiro x Zero Two 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=150b24&amp;title_color=b8b8b8&amp;text_color=b8b8b8&amp;icon_color=c93939" width="400" height="195" alt="GitHub 贡献概览（Hiro x Zero Two）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/hiroXZeroTwo/dark/hiro_x_zero_two.png" width="150" height="84" alt="Hiro x Zero Two 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -46,8 +58,14 @@
 <summary>Mai Dark</summary>
 
 <p align="center">
-  <img src="assets/doki/mai-dark.svg" width="402" height="168" alt="Mai Dark 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=25254b&amp;title_color=bbbbbb&amp;text_color=bbbbbb&amp;icon_color=fee3cf" width="400" height="195" alt="GitHub 贡献概览（Mai Dark）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/bunnySenpai/mai/dark/mai_dark.png" width="119" height="150" alt="Mai Dark 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -56,8 +74,14 @@
 <summary>Ram</summary>
 
 <p align="center">
-  <img src="assets/doki/ram.svg" width="402" height="168" alt="Ram 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=302930&amp;title_color=bbbbbb&amp;text_color=bbbbbb&amp;icon_color=e594bf" width="400" height="195" alt="GitHub 贡献概览（Ram）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/ram/ram.png" width="85" height="150" alt="Ram 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -66,8 +90,14 @@
 <summary>Rem</summary>
 
 <p align="center">
-  <img src="assets/doki/rem.svg" width="402" height="168" alt="Rem 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=292a30&amp;title_color=bbbbbb&amp;text_color=bbbbbb&amp;icon_color=578cda" width="400" height="195" alt="GitHub 贡献概览（Rem）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/rem/rem.png" width="86" height="150" alt="Rem 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -76,8 +106,14 @@
 <summary>Beatrice</summary>
 
 <p align="center">
-  <img src="assets/doki/beatrice.svg" width="402" height="168" alt="Beatrice 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=ffe4f1&amp;title_color=000000&amp;text_color=000000&amp;icon_color=2460ff" width="400" height="195" alt="GitHub 贡献概览（Beatrice）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/beatrice/beatrice.png" width="150" height="125" alt="Beatrice 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -86,8 +122,14 @@
 <summary>Emilia Light</summary>
 
 <p align="center">
-  <img src="assets/doki/emilia-light.svg" width="402" height="168" alt="Emilia Light 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=fcf3ff&amp;title_color=252427&amp;text_color=252427&amp;icon_color=82357d" width="400" height="195" alt="GitHub 贡献概览（Emilia Light）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/reZero/emilia/light/emilia_light.png" width="99" height="150" alt="Emilia Light 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -96,8 +138,14 @@
 <summary>Mai Light</summary>
 
 <p align="center">
-  <img src="assets/doki/mai-light.svg" width="402" height="168" alt="Mai Light 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=fbf3f2&amp;title_color=252427&amp;text_color=252427&amp;icon_color=4f5287" width="400" height="195" alt="GitHub 贡献概览（Mai Light）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/bunnySenpai/mai/light/mai_light.png" width="119" height="150" alt="Mai Light 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -106,8 +154,14 @@
 <summary>Tomori Nao</summary>
 
 <p align="center">
-  <img src="assets/doki/tomori-nao.svg" width="402" height="168" alt="Tomori Nao 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=f5ede5&amp;title_color=101010&amp;text_color=101010&amp;icon_color=276fd8" width="400" height="195" alt="GitHub 贡献概览（Tomori Nao）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/charlotte/nao/light/nao_light.png" width="150" height="148" alt="Tomori Nao 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -116,8 +170,14 @@
 <summary>Zero Two Light Lily</summary>
 
 <p align="center">
-  <img src="assets/doki/zero-two-light-lily.svg" width="402" height="168" alt="Zero Two Light Lily 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=fcfcfc&amp;title_color=252427&amp;text_color=252427&amp;icon_color=a62210" width="400" height="195" alt="GitHub 贡献概览（Zero Two Light Lily）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/zeroTwo/lily/zero_two_lily.png" width="150" height="122" alt="Zero Two Light Lily 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
@@ -126,8 +186,14 @@
 <summary>Zero Two Dark Rose</summary>
 
 <p align="center">
-  <img src="assets/doki/zero-two-dark-rose.svg" width="402" height="168" alt="Zero Two Dark Rose 的 Doki 配色卡">
+  <img src="https://github-stats-extended.vercel.app/api?username=SakuraLoveForever&amp;custom_title=GitHub+%E8%B4%A1%E7%8C%AE%E6%A6%82%E8%A7%88&amp;locale=cn&amp;hide_rank=true&amp;hide_border=true&amp;show_icons=true&amp;disable_animations=true&amp;card_width=400&amp;bg_color=330f10&amp;title_color=efefef&amp;text_color=efefef&amp;icon_color=e4dad4" width="400" height="195" alt="GitHub 贡献概览（Zero Two Dark Rose）">
   <img src="https://doki.assets.unthrottled.io/stickers/smol/franxx/zeroTwo/rose/zero_two_rose.png" width="150" height="122" alt="Zero Two Dark Rose 的 Doki 角色贴图">
+</p>
+
+<p align="center">
+  <a href="https://github.com/SakuraLoveForever/website_Sakura_Love">项目总览</a> ·
+  <a href="https://github.com/SakuraLoveForever/PC_System_Auto_Scripts">Windows 启动项</a> ·
+  <a href="https://github.com/SakuraLoveForever/sumatra-deepseek-translator">PDF 划词翻译</a>
 </p>
 
 </details>
