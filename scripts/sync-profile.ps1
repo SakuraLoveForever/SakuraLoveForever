@@ -1,7 +1,8 @@
 param(
     [switch]$Publish,
     [switch]$InstallTask,
-    [switch]$RemoveTask
+    [switch]$RemoveTask,
+    [switch]$CodexActivity
 )
 
 $ErrorActionPreference = 'Stop'
@@ -9,6 +10,11 @@ $ErrorActionPreference = 'Stop'
 $env:GIT_TERMINAL_PROMPT = '0'
 $env:GCM_INTERACTIVE = 'Never'
 $taskName = 'SakuraLoveForever-ProfileStats'
+$logName = 'profile-sync.log'
+if ($CodexActivity) {
+    $taskName = 'SakuraLoveForever-CodexActivity'
+    $logName = 'codex-activity-sync.log'
+}
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $stateRoot = Join-Path $env:LOCALAPPDATA 'SakuraLoveForever'
 New-Item -ItemType Directory -Path $stateRoot -Force | Out-Null
@@ -24,21 +30,32 @@ if ($InstallTask) {
     if (-not (Test-Path -LiteralPath $launcher)) { throw 'Background launcher is missing.' }
     $arguments = '//B //Nologo "' + $launcher + '"'
     if ($Publish) { $arguments += ' -Publish' }
+    if ($CodexActivity) { $arguments += ' -CodexActivity' }
     $action = New-ScheduledTaskAction -Execute (Join-Path $env:SystemRoot 'System32\wscript.exe') `
         -Argument $arguments -WorkingDirectory $repoRoot
-    $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
-        -RepetitionInterval (New-TimeSpan -Hours 1)
+    $retry = @{}
+    $schedule = 'every hour'
+    if ($CodexActivity) {
+        $tomorrow = [DateTimeOffset]::UtcNow.AddHours(8).Date.AddDays(1)
+        $trigger = New-ScheduledTaskTrigger -Daily -At $tomorrow
+        $trigger.StartBoundary = $tomorrow.ToString("yyyy-MM-dd'T'00:00:00", [CultureInfo]::InvariantCulture) + '+08:00'
+        $retry = @{ RestartCount = 3; RestartInterval = (New-TimeSpan -Minutes 10) }
+        $schedule = 'daily at 00:00 Beijing time'
+    } else {
+        $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) `
+            -RepetitionInterval (New-TimeSpan -Hours 1)
+    }
     $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -Hidden `
-        -ExecutionTimeLimit (New-TimeSpan -Minutes 20) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+        -ExecutionTimeLimit (New-TimeSpan -Minutes 20) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries @retry
     $principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) `
         -LogonType Interactive -RunLevel Limited
     Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings `
         -Principal $principal -Force | Out-Null
-    Write-Output "Installed $taskName (every hour while logged in; publish=$Publish)"
+    Write-Output "Installed $taskName ($schedule while logged in; publish=$Publish)"
     exit 0
 }
 
-$logFile = Join-Path $stateRoot 'profile-sync.log'
+$logFile = Join-Path $stateRoot $logName
 
 function Invoke-NativeLogged {
     param([string]$Command, [string[]]$Arguments, [string]$Failure, [switch]$AllowFailure)
@@ -68,17 +85,23 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect the Git working tree.' }
         if ($dirty) { throw 'Working tree is not clean; scheduled publication skipped.' }
     }
-    Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect') 'Collection failed; inspect the local log.'
-    if ($Publish) {
-        & git add -- data/ai-usage.json data/badges assets/ai-usage.png
+    if ($CodexActivity) {
+        Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'codex_activity.py')) 'Codex activity collection failed; inspect the local log.'
+        $artifacts = @('assets/codex-activity-daily.svg', 'assets/codex-activity-weekly.svg', 'assets/codex-activity-cumulative.svg')
+        $commitMessage = 'chore: refresh Codex account activity [skip ci]'
+    } else {
+        Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect') 'Collection failed; inspect the local log.'
+        $artifacts = @('data/ai-usage.json', 'data/badges', 'assets/ai-usage.png')
         # The Bailian snapshot only exists after the local collector has run.
-        if (Test-Path -LiteralPath 'data/aliyun-usage.json') {
-            & git add -- data/aliyun-usage.json
-        }
+        if (Test-Path -LiteralPath 'data/aliyun-usage.json') { $artifacts += 'data/aliyun-usage.json' }
+        $commitMessage = 'chore: refresh local AI usage [skip ci]'
+    }
+    if ($Publish) {
+        & git add -- @artifacts
         if ($LASTEXITCODE -ne 0) { throw 'Cannot stage aggregate assets.' }
         & git diff --cached --quiet
         if ($LASTEXITCODE -eq 1) {
-            Invoke-NativeLogged 'git' @('commit', '-m', 'chore: refresh local AI usage [skip ci]') 'Cannot commit aggregate assets.'
+            Invoke-NativeLogged 'git' @('commit', '-m', $commitMessage) 'Cannot commit aggregate assets.'
         } elseif ($LASTEXITCODE -ne 0) { throw 'Cannot inspect staged changes.' }
         # Existing cloud metrics jobs own different files, so their commits can be rebased.
         try {

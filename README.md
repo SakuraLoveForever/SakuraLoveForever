@@ -36,6 +36,28 @@
   <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FSakuraLoveForever%2FSakuraLoveForever%2Fmain%2Fdata%2Fbadges%2Faliyun-tokens.json&cacheSeconds=300" alt="DeepSeek (Bailian) tokens">&nbsp;
 </p>
 
+<p align="center">
+  <a href="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/main/assets/codex-activity-daily.svg">
+    <img src="assets/codex-activity-daily.svg" alt="Codex 账号每日 Token 活动热力图">
+  </a>
+  <br>
+  <sub>点击图表打开原图，悬停方格查看当天的 Token 用量。</sub>
+</p>
+
+<details>
+<summary>Codex Token 活动 · 每周</summary>
+
+![Codex 账号每周 Token 活动](assets/codex-activity-weekly.svg)
+
+</details>
+
+<details>
+<summary>Codex Token 活动 · 累计总量</summary>
+
+![Codex 账号累计 Token 活动](assets/codex-activity-cumulative.svg)
+
+</details>
+
 <details>
 <summary>Tokscale 原生 token 可视化</summary>
 

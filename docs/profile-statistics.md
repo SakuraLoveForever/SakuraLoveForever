@@ -70,6 +70,23 @@ wscript.exe //B //Nologo scripts/sync-profile-background.vbs -Publish
 
 GitHub 的 Profile statistics checks 工作流运行测试并检查徽章数据一致性。GitHub 托管 runner 无法读取电脑日志，AI 用量由上述本机任务采集。README 的 Shields/GitHub 图片有缓存，新提交不会保证立刻出现在页面。
 
+## Codex Profile Token 活动
+
+主页的每日、每周和累计图使用 [Codex App Server 的账号用量接口](https://learn.chatgpt.com/docs/app-server#7-token-usage-chatgpt)。每天沿用接口提供的日期，每周从周一开始，累计折线相加图表窗口内的记录。累计图也会单独展示账号累计总量（若接口提供）。公开仓库仅保存三张汇总 SVG。点击每日图可打开原图，悬停格子显示接口返回的日期和按日用量。
+
+本机任务 `SakuraLoveForever-CodexActivity` 每天北京时间 **00:00** 运行，在电脑开机并登录 Windows 后补跑错过的执行。使用本机 `codex` CLI 已登录的 ChatGPT 账号、网络和 Git 凭证，要求干净的 `main` 工作区。读取失败时保留已发布图表，日志位于 `%LOCALAPPDATA%/SakuraLoveForever/codex-activity-sync.log`。这个任务独立于上述每小时的日志统计。
+
+```powershell
+# 安装或更新每天 00:00 同步任务。
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -CodexActivity -InstallTask -Publish
+
+# 手动同步并发布。
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -CodexActivity -Publish
+
+# 移除每天 00:00 同步任务。
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -CodexActivity -RemoveTask
+```
+
 ## 验证
 
 回归测试覆盖缓存/推理不重复计数、私有字段不进入汇总、无效导出不覆盖旧统计，以及 token/时间历史下降保护。首次接入已用 ccusage@20.0.26 独立校验 Codex 截至 **2026-10-07** 的历史：两者均为 **1,955,133,139 token**，差值为 0。当前日持续有新调用，不同采集时刻的当日总量可能不同。
