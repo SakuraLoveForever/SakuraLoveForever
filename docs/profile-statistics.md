@@ -77,6 +77,14 @@ GitHub 的 Profile statistics checks 工作流运行测试并检查徽章数据�
 
 本机任务 `SakuraLoveForever-CodexActivity` 每天北京时间 **00:00** 运行，在电脑开机并登录 Windows 后补跑错过的执行。使用本机 `codex` CLI 已登录的 ChatGPT 账号、网络和 Git 凭证，要求干净的 `main` 工作区。读取失败时保留已发布图表，日志位于 `%LOCALAPPDATA%/SakuraLoveForever/codex-activity-sync.log`。这个任务独立于上述每小时的日志统计。
 
+该午夜任务也运行 `scripts/codex_plans.py`，更新徽章下方的 `assets/codex-plan-timeline.svg`。时间线读取默认 `~/.codex/sessions` 与 `~/.codex/archived_sessions` 中的普通和 `.jsonl.zst` 日志，仅采纳 Codex 配额事件里的 `plus`、`prolite`、`pro`，分别展示为 Plus、Pro 100、Pro 200。扫描使用 Python **3.14+** 的标准库 `compression.zstd`，逐帧读取压缩历史。
+
+日期按北京时间汇总。同套餐连续观测合成一个范围，跨度内可以包含无活动日。同一天观测到多个套餐时共享该日期的线段，不同套餐之间的空白日期显示为灰色虚线。图表表达本机日志中观测到的套餐范围，订阅生效和到期日期以账单为准。
+
+日期和套餐代号保留在本机 `%LOCALAPPDATA%/SakuraLoveForever/codex-plan-observations.json`，后续扫描合并这些观测，保留已轮转日志的日期。公开仓库只提交时间线 SVG。扫描和账号 Token 图分别执行，某项失败时仍发布另一项的成功结果，并返回失败状态供任务计划程序重试。
+
+手动回填可运行 `python scripts/codex_plans.py`。测试或迁移时可指定 `--home <Codex日志目录>`、`--state <本地观测JSON>` 和 `--root <输出仓库>`。
+
 ```powershell
 # 安装或更新每天 00:00 同步任务。
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -CodexActivity -InstallTask -Publish

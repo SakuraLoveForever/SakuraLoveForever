@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="164" viewBox="0 0 900 164" role="img" aria-labelledby="plan-title plan-description">
+<title id="plan-title">Codex 套餐时间线</title>
+<desc id="plan-description">本机日志记录的套餐观测日期。蓝色 Plus，紫色 Pro 100，金色 Pro 200，灰色虚线为不同套餐之间缺少记录的日期。观测范围可能包含同套餐的无活动日。</desc>
+<rect x="1" y="1" width="898" height="162" rx="16" fill="#161B27" stroke="#2A3346"/>
+<g font-family="Segoe UI, Microsoft YaHei, sans-serif">
+<text x="33.00" y="26" font-size="21" fill="#E8EDF8" text-anchor="start" dominant-baseline="middle" font-weight="700">Codex 套餐时间线</text>
+<text x="867.00" y="26" font-size="12" fill="#B1BCD1" text-anchor="end" dominant-baseline="middle" font-weight="400">2026 · 北京时间 · 本机日志观测</text>
+<rect x="33.00" y="73.5" width="662.04" height="9" rx="4.5" fill="#7AA2F7"><title>Plus · 2026-08-20 — 2026-11-04</title></rect>
+<path d="M 695.04 78 H 712.24" fill="none" stroke="#788099" stroke-width="4" stroke-dasharray="3 4"><title>缺记录 · 2026-11-05 — 2026-11-06</title></path>
+<rect x="712.24" y="73.5" width="73.08" height="9" rx="4.5" fill="#BB9AF7"><title>Pro 100 · 2026-11-07 — 2026-11-15</title></rect>
+<rect x="785.32" y="73.5" width="81.68" height="9" rx="4.5" fill="#E0AF68"><title>Pro 200 · 2026-11-15 — 2026-11-24</title></rect>
+<path d="M 33.00 89 V 95" stroke="#49556C"/>
+<text x="33.00" y="107" font-size="13" fill="#B1BCD1" text-anchor="start" dominant-baseline="middle" font-weight="400">08/20</text>
+<path d="M 867.00 89 V 95" stroke="#49556C"/>
+<text x="867.00" y="107" font-size="13" fill="#B1BCD1" text-anchor="end" dominant-baseline="middle" font-weight="400">11/24</text>
+<path d="M 136.18 89 V 95" stroke="#49556C"/>
+<text x="136.18" y="107" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">09/01</text>
+<path d="M 394.11 89 V 95" stroke="#49556C"/>
+<text x="394.11" y="107" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">10/01</text>
+<path d="M 660.65 89 V 95" stroke="#49556C"/>
+<text x="660.65" y="107" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">11/01</text>
+<path d="M 686.44 67 V 61" stroke="#49556C"/>
+<text x="686.44" y="54" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">11/04</text>
+<path d="M 712.24 89 V 95" stroke="#49556C"/>
+<text x="712.24" y="107" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">11/07</text>
+<path d="M 781.02 89 V 95" stroke="#49556C"/>
+<text x="781.02" y="107" font-size="13" fill="#B1BCD1" text-anchor="middle" dominant-baseline="middle" font-weight="400">11/15</text>
+<rect x="33" y="134" width="18" height="6" rx="3" fill="#7AA2F7"/>
+<text x="59.00" y="137" font-size="14" fill="#D7DFF0" text-anchor="start" dominant-baseline="middle" font-weight="400">Plus</text>
+<rect x="133" y="134" width="18" height="6" rx="3" fill="#BB9AF7"/>
+<text x="159.00" y="137" font-size="14" fill="#D7DFF0" text-anchor="start" dominant-baseline="middle" font-weight="400">Pro 100</text>
+<rect x="259" y="134" width="18" height="6" rx="3" fill="#E0AF68"/>
+<text x="285.00" y="137" font-size="14" fill="#D7DFF0" text-anchor="start" dominant-baseline="middle" font-weight="400">Pro 200</text>
+<path d="M 385 137 H 403" stroke="#788099" stroke-width="3" stroke-dasharray="3 4"/>
+<text x="411.00" y="137" font-size="14" fill="#D7DFF0" text-anchor="start" dominant-baseline="middle" font-weight="400">缺记录</text>
+</g>
+</svg>

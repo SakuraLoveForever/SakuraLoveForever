@@ -37,6 +37,10 @@
 </p>
 
 <p align="center">
+  <img src="assets/codex-plan-timeline.svg" alt="Codex 套餐时间线：Plus、Pro 100 与 Pro 200 的日志观测日期" width="900">
+</p>
+
+<p align="center">
   <a href="https://raw.githubusercontent.com/SakuraLoveForever/SakuraLoveForever/main/assets/codex-activity-daily.svg">
     <img src="assets/codex-activity-daily.svg" alt="Codex 账号每日 Token 活动热力图">
   </a>

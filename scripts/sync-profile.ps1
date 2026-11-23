@@ -85,16 +85,29 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect the Git working tree.' }
         if ($dirty) { throw 'Working tree is not clean; scheduled publication skipped.' }
     }
+    $collectionFailures = @()
     if ($CodexActivity) {
-        Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'codex_activity.py')) 'Codex activity collection failed; inspect the local log.'
-        $artifacts = @('assets/codex-activity-daily.svg', 'assets/codex-activity-weekly.svg', 'assets/codex-activity-cumulative.svg')
-        $commitMessage = 'chore: refresh Codex account activity [skip ci]'
+        $artifacts = @()
+        $collectors = @(
+            @{ Script = 'codex_activity.py'; Assets = @('assets/codex-activity-daily.svg', 'assets/codex-activity-weekly.svg', 'assets/codex-activity-cumulative.svg') },
+            @{ Script = 'codex_plans.py'; Assets = @('assets/codex-plan-timeline.svg') }
+        )
+        foreach ($collector in $collectors) {
+            try {
+                Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot $collector.Script)) "$($collector.Script) failed; inspect the local log."
+                $artifacts += $collector.Assets
+            } catch {
+                $collectionFailures += $_.Exception.Message
+                "$(Get-Date -Format o) $($_.Exception.Message)" | Out-File -FilePath $logFile -Append -Encoding utf8
+            }
+        }
+        $commitMessage = 'chore: refresh Codex activity and plan timeline [skip ci]'
     } else {
         Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect', '--codex-only') 'Collection failed; inspect the local log.'
         $artifacts = @('data/ai-usage.json', 'data/badges/codex-tokens.json', 'data/badges/codex-time.json', 'data/badges/updated.json', 'assets/ai-usage.png')
         $commitMessage = 'chore: refresh local Codex usage [skip ci]'
     }
-    if ($Publish) {
+    if ($Publish -and $artifacts.Count -gt 0) {
         & git add -- @artifacts
         if ($LASTEXITCODE -ne 0) { throw 'Cannot stage aggregate assets.' }
         & git diff --cached --quiet
@@ -110,6 +123,7 @@ try {
         }
         Invoke-NativeLogged 'git' @('push', 'origin', 'main') 'Push failed; retained the local aggregate commit for the next run.'
     }
+    if ($collectionFailures.Count -gt 0) { throw ($collectionFailures -join ' ') }
     "$(Get-Date -Format o) Profile statistics refreshed (publish=$Publish)" |
         Out-File -FilePath $logFile -Append -Encoding utf8
     Write-Output "Profile statistics refreshed. Local log: $logFile"
