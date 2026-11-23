@@ -90,11 +90,9 @@ try {
         $artifacts = @('assets/codex-activity-daily.svg', 'assets/codex-activity-weekly.svg', 'assets/codex-activity-cumulative.svg')
         $commitMessage = 'chore: refresh Codex account activity [skip ci]'
     } else {
-        Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect') 'Collection failed; inspect the local log.'
-        $artifacts = @('data/ai-usage.json', 'data/badges', 'assets/ai-usage.png')
-        # The Bailian snapshot only exists after the local collector has run.
-        if (Test-Path -LiteralPath 'data/aliyun-usage.json') { $artifacts += 'data/aliyun-usage.json' }
-        $commitMessage = 'chore: refresh local AI usage [skip ci]'
+        Invoke-NativeLogged 'python' @((Join-Path $PSScriptRoot 'profile_stats.py'), 'collect', '--codex-only') 'Collection failed; inspect the local log.'
+        $artifacts = @('data/ai-usage.json', 'data/badges/codex-tokens.json', 'data/badges/codex-time.json', 'data/badges/updated.json', 'assets/ai-usage.png')
+        $commitMessage = 'chore: refresh local Codex usage [skip ci]'
     }
     if ($Publish) {
         & git add -- @artifacts

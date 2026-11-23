@@ -147,6 +147,60 @@ class ProfileStatsTests(unittest.TestCase):
                  ("data/ai-usage.json", "data/badges/codex-tokens.json")]
         self.assertEqual(after, before)
 
+    def test_codex_only_advances_without_reading_dsh_exports(self):
+        self.assertEqual(self.collect().returncode, 0)
+        snapshot = self.root / "data/ai-usage.json"
+        previous = json.loads(snapshot.read_text())
+        badges = self.root / "data/badges"
+        preserved = {name: (badges / name).read_bytes() for name in
+                     ("dsh-time.json", "dsh-tokens.json", "aliyun-tokens.json")}
+        (self.imports / "dsh.json").unlink()
+        (self.imports / "dsh-usage.json").write_text("invalid export")
+        graph = export("codex", tokens=425)
+        graph["contributions"][0]["tokenBreakdown"]["input"] = 200
+        graph["contributions"][0]["activeTimeMs"] = 240000
+        graph["timeMetrics"]["totalActiveTimeMs"] = 240000
+        (self.imports / "codex.json").write_text(json.dumps(graph))
+
+        result = self.run_cli("collect", "--codex-only", "--import-dir", str(self.imports))
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        current = json.loads(snapshot.read_text())
+        self.assertEqual(current["tools"]["dsh"], previous["tools"]["dsh"])
+        self.assertEqual(current["extra_tools"], previous["extra_tools"])
+        self.assertEqual(current["tools"]["codex"]["active_ms"], 240000)
+        self.assertEqual(json.loads((badges / "codex-tokens.json").read_text())["message"], "425")
+        self.assertEqual(json.loads((badges / "codex-time.json").read_text())["message"], "0h 04m")
+        self.assertEqual(preserved, {name: (badges / name).read_bytes() for name in preserved})
+
+    def test_codex_only_first_snapshot_can_render_and_collect_again(self):
+        (self.imports / "dsh.json").unlink()
+        (self.imports / "dsh-usage.json").unlink()
+        for command in (("collect", "--codex-only", "--import-dir", str(self.imports)),
+                        ("render",),
+                        ("collect", "--codex-only", "--import-dir", str(self.imports))):
+            result = self.run_cli(*command)
+            self.assertEqual(result.returncode, 0, result.stderr)
+        data = json.loads((self.root / "data/ai-usage.json").read_text())
+        self.assertEqual(set(data["tools"]), {"codex"})
+        self.assertEqual(sorted(path.name for path in (self.root / "data/badges").iterdir()),
+                         ["codex-time.json", "codex-tokens.json", "updated.json"])
+
+    def test_codex_only_rejects_reduced_codex_time(self):
+        self.assertEqual(self.collect().returncode, 0)
+        snapshot = self.root / "data/ai-usage.json"
+        before = snapshot.read_bytes()
+        graph = export("codex")
+        graph["contributions"][0]["activeTimeMs"] = 0
+        graph["timeMetrics"]["totalActiveTimeMs"] = 0
+        (self.imports / "codex.json").write_text(json.dumps(graph))
+
+        result = self.run_cli("collect", "--codex-only", "--import-dir", str(self.imports))
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("History decreased for codex", result.stderr)
+        self.assertEqual(snapshot.read_bytes(), before)
+
     def test_disappearing_history_cannot_silently_reduce_totals(self):
         self.assertEqual(self.collect().returncode, 0)
         before = (self.root / "data/ai-usage.json").read_bytes()

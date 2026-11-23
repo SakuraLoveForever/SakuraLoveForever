@@ -38,6 +38,7 @@ scripts/profile_stats.py 只调用现成 CLI、检查输出和历史是否下降
 
 ```powershell
 python scripts/profile_stats.py collect
+python scripts/profile_stats.py collect --codex-only
 python -m unittest discover -s tests -v
 ```
 
@@ -45,7 +46,7 @@ python -m unittest discover -s tests -v
 
 ## 持续自动同步
 
-采用 **Windows 任务计划程序，每小时一次**。采集日期固定使用 Asia/Shanghai。电脑开机且用户登录时运行；错过的执行在恢复后补跑。不需要一直打开统计程序或网页：每次运行都会读取本机仍保留的全部受支持历史日志，补入两次运行之间的用量，不只统计程序运行的那段时间。已删除、未记录或未同步到本机的日志无法自动补回。采集后只提交、推送汇总 JSON、Shields 数据和原生 PNG。先采集并保存本地提交，再拉取远程并推送；GitHub 暂时断网不会阻断本地采集。
+采用 **Windows 任务计划程序，每小时一次**。每小时任务执行 `collect --codex-only`，从本机 Codex 日志更新 token、使用时长和年度图。DeepSeek Harness 与百炼沿用已发布汇总，手动执行 `collect` 可采集全部工具。采集日期固定使用 Asia/Shanghai。电脑开机且用户登录时运行，错过的执行在恢复后补跑。每次运行都会读取本机仍保留的全部受支持 Codex 历史日志，补入两次运行之间的用量。采集后提交、推送 Codex 汇总 JSON、两个 Codex 徽章、采集时间和原生 PNG。先采集并保存本地提交，再拉取远程并推送，GitHub 暂时断网会保留本地采集结果。
 
 ```powershell
 # 安装或更新每小时任务（普通用户权限，隐藏运行）。
@@ -58,7 +59,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -Pu
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/sync-profile.ps1 -RemoveTask
 ```
 
-任务名 SakuraLoveForever-ProfileStats；日志 %LOCALAPPDATA%/SakuraLoveForever/profile-sync.log。需要干净的 main 分支和有效 Git 凭证；工作区正在编辑或切换分支时跳过，避免处理其他工作。恢复干净的 main 后下次重试。采集失败保留旧图，推送失败保留本地提交以便下次重试。恢复后不会高频追赶每一次遗漏。
+任务名 SakuraLoveForever-ProfileStats，日志 %LOCALAPPDATA%/SakuraLoveForever/profile-sync.log。本机两个同步任务均从专用检出目录 `%LOCALAPPDATA%/SakuraLoveForever/publisher` 启动，安装任务时在此目录执行上述命令。发布需要该目录处于干净的 main 分支和有效 Git 凭证。日常开发使用项目原目录，定时任务在专用目录采集和发布。采集失败保留旧图，推送失败保留本地提交以便下次重试。恢复后按每小时计划执行。
 
 定时任务通过 `wscript.exe //B` 启动 `scripts/sync-profile-background.vbs`，从进程创建时隐藏 PowerShell；统计 CLI 子进程也使用 Windows 无窗口标志。后台不显示命令行窗口或托盘图标，错误仍保留在上述日志，任务计划程序保留失败退出码。已有任务需重新安装，或只将现有任务的操作更新为此入口；使用每小时触发器并保留原来的登录权限。
 

@@ -86,7 +86,7 @@ def normalize_dsh(graph):
 def check_history(previous, current):
     """Stop rather than silently publish reduced history after a log deletion."""
     seen = 0
-    for client in TOOLS:
+    for client in previous["tools"]:
         seen += compare_days(client, previous["tools"][client]["daily"],
                              current["tools"][client]["daily"])
     provider = ALIYUN[0]
@@ -135,10 +135,11 @@ def badge_values(tool):
     return values
 
 
-def render_badges(root, data):
+def render_badges(root, data, clients=None):
     # Shields.io renders its existing endpoint template; no custom SVG/layout.
     # Per tool: a token total and a session clock; no cache split.
-    for client, (name, color) in TOOLS.items():
+    for client in clients or data["tools"]:
+        name, color = TOOLS[client]
         values = badge_values(data["tools"][client])
         for key in ("tokens", "time"):
             value = values[key]
@@ -148,7 +149,7 @@ def render_badges(root, data):
                 "color": color.lstrip("#")}, ensure_ascii=False, indent=2) + "\n")
     provider, name, color = ALIYUN
     # Only the total: the split endpoints are published in the JSON, not as badges.
-    if provider in data.get("extra_tools", {}):
+    if clients is None and provider in data.get("extra_tools", {}):
         total = data["extra_tools"][provider]["total"]
         atomic_write(root / "data/badges/aliyun-tokens.json", json.dumps({
             "schemaVersion": 1, "label": f"{name} {LABELS['tokens']}", "message": f"{total:,}",
@@ -212,6 +213,8 @@ def build_snapshot(args):
     environment = dict(os.environ, TOKSCALE_CONFIG_DIR=str(config), TZ="Asia/Shanghai", NO_COLOR="1")
     npx = shutil.which("npx.cmd" if os.name == "nt" else "npx")
     tools = {}
+    previous = args.root / "data/ai-usage.json"
+    previous_data = json.loads(previous.read_text(encoding="utf-8")) if previous.exists() else {}
 
     def run(arguments):
         command = [npx, "--yes", f"tokscale@{VERSION}", *arguments]
@@ -246,24 +249,31 @@ def build_snapshot(args):
             run(["graph", "--client", "codex", "--output", str(codex_path), "--no-spinner"])
             # The DSH session clock is the one thing still taken from Tokscale: it derives
             # it from message timing, which the local token scan does not reconstruct.
-            run(["graph", "--client", "dsh", "--output", str(Path(temporary) / "dsh.json"), "--no-spinner"])
+            if not args.codex_only:
+                run(["graph", "--client", "dsh", "--output", str(Path(temporary) / "dsh.json"), "--no-spinner"])
         tools = {"codex": normalize(json.loads(codex_path.read_text(encoding="utf-8-sig")), "codex")}
-        dsh = collect_dsh(args, temporary)
-        providers = dsh.get("providers", {})
-        tools["dsh"] = {key: value for key, value in dsh.items() if key != "providers"}
-        # The session clock still comes from Tokscale: it derives it from message timing,
-        # which this local scan does not reconstruct.
-        clock_path = args.import_dir / "dsh.json" if args.import_dir else Path(temporary) / "dsh.json"
-        clock = json.loads(clock_path.read_text(encoding="utf-8-sig"))
-        tools["dsh"]["active_ms"] = number(clock["timeMetrics"]["totalActiveTimeMs"])
-        data = {"schema_version": 1, "timezone": "Asia/Shanghai", "source": f"tokscale@{VERSION} + DSH logs",
-                "updated_at": datetime.now(SHANGHAI).isoformat(timespec="seconds"), "tools": tools}
-        # Bailian is billed by Alibaba Cloud, so only its own total is published apart.
-        data["extra_tools"] = ({ALIYUN[0]: {**tools["dsh"], "total": providers[ALIYUN[0]]}}
-                               if providers.get(ALIYUN[0]) else {})
-        previous = args.root / "data/ai-usage.json"
-        if previous.exists() and not args.allow_decrease:
-            check_history(json.loads(previous.read_text(encoding="utf-8")), data)
+        extra_tools = {}
+        if not args.codex_only:
+            dsh = collect_dsh(args, temporary)
+            providers = dsh.get("providers", {})
+            tools["dsh"] = {key: value for key, value in dsh.items() if key != "providers"}
+            # The session clock still comes from Tokscale: it derives it from message timing,
+            # which this local scan does not reconstruct.
+            clock_path = args.import_dir / "dsh.json" if args.import_dir else Path(temporary) / "dsh.json"
+            clock = json.loads(clock_path.read_text(encoding="utf-8-sig"))
+            tools["dsh"]["active_ms"] = number(clock["timeMetrics"]["totalActiveTimeMs"])
+            # Bailian is billed by Alibaba Cloud, so only its own total is published apart.
+            extra_tools = ({ALIYUN[0]: {**tools["dsh"], "total": providers[ALIYUN[0]]}}
+                           if providers.get(ALIYUN[0]) else {})
+        data = {"schema_version": 1, "timezone": "Asia/Shanghai",
+                "updated_at": datetime.now(SHANGHAI).isoformat(timespec="seconds"),
+                "tools": tools, "extra_tools": extra_tools}
+        if args.codex_only:
+            data["tools"] = {**previous_data.get("tools", {}), **tools}
+            data["extra_tools"] = previous_data.get("extra_tools", {})
+        data["source"] = f"tokscale@{VERSION}" + (" + DSH logs" if "dsh" in data["tools"] else "")
+        if previous_data and not args.allow_decrease:
+            check_history(previous_data, data)
         if not args.import_dir:
             image = Path(temporary) / "ai-usage.png"
             run(["wrapped", "--client", "codex", "--clients", "--year",
@@ -275,14 +285,14 @@ def build_snapshot(args):
             staged = destination.with_suffix(".png.tmp")
             shutil.copyfile(image, staged)
             staged.replace(destination)
-        render_badges(args.root, data)
+        render_badges(args.root, data, clients=("codex",) if args.codex_only else None)
         atomic_write(previous, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
     for client, tool in tools.items():
         days = tool["daily"]
         coverage = f"{days[0]['date']} to {days[-1]['date']}" if days else "no usage recorded"
         print(f'{TOOLS[client][0]}: {sum(row["tokens"] for row in days):,} tokens; '
               f'{duration(tool["active_ms"])} active session time; {coverage}')
-    for provider, tool in data.get("extra_tools", {}).items():
+    for provider, tool in extra_tools.items():
         days = tool["daily"]
         coverage = f"{days[0]['date']} to {days[-1]['date']}" if days else "no usage recorded"
         print(f'{ALIYUN[1]}: {tool["total"]:,} tokens; {coverage}')
@@ -298,6 +308,7 @@ def main():
                        help="Extra user home whose DSH logs hold more usage")
     local.add_argument("--import-dir", type=Path, help="Offline codex.json/dsh.json exports; update badges only")
     local.add_argument("--allow-decrease", action="store_true", help="Accept a reviewed historical correction")
+    local.add_argument("--codex-only", action="store_true", help="Update Codex from its logs and retain other tools' saved statistics")
     commands.add_parser("render", help="Refresh Shields endpoint JSON from existing aggregate data")
     args = parser.parse_args()
     if args.command == "collect":

@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -18,8 +19,24 @@ class PublishTests(unittest.TestCase):
             scripts = repo / "scripts"
             scripts.mkdir()
             source = Path(__file__).resolve().parents[1]
-            for name in ("sync-profile.ps1", "profile_stats.py", "collect-dsh-usage.js"):
-                shutil.copyfile(source / "scripts" / name, scripts / name)
+            shutil.copyfile(source / "scripts/sync-profile.ps1", scripts / "sync-profile.ps1")
+            (scripts / "profile_stats.py").write_text(textwrap.dedent("""\
+                import json
+                import sys
+                from pathlib import Path
+
+                assert sys.argv[1:] == ["collect", "--codex-only"], sys.argv
+                root = Path(__file__).resolve().parents[1]
+                badges = root / "data/badges"
+                badges.mkdir(parents=True)
+                snapshot = {"tools": {"codex": {"active_ms": 120000}}}
+                (root / "data/ai-usage.json").write_text(json.dumps(snapshot))
+                for name in ("codex-tokens", "codex-time", "updated"):
+                    (badges / (name + ".json")).write_text("{}\\n")
+                (root / "assets").mkdir()
+                (root / "assets/ai-usage.png").write_bytes(b"\\x89PNG\\r\\n\\x1a\\n")
+                print("Collector progress", file=sys.stderr)
+                """))
             (repo / ".gitignore").write_text("__pycache__/\n*.tmp\n")
 
             def git(*args, cwd=repo):
@@ -45,7 +62,7 @@ class PublishTests(unittest.TestCase):
             self.assertEqual(git("rev-parse", "HEAD").stdout,
                              git("rev-parse", "main", cwd=remote).stdout)
             data = json.loads(git("show", "main:data/ai-usage.json", cwd=remote).stdout)
-            self.assertEqual(set(data["tools"]), {"codex", "dsh"})
+            self.assertEqual(set(data["tools"]), {"codex"})
             self.assertTrue((repo / "assets/ai-usage.png").exists())
             # Windows Git sets read-only object bits; clear them for TemporaryDirectory cleanup.
             for path in root.rglob("*"):
