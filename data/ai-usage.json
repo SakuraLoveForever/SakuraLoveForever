@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "timezone": "Asia/Shanghai",
-  "updated_at": "2026-11-24T16:09:54+08:00",
+  "updated_at": "2026-11-24T17:09:37+08:00",
   "tools": {
     "codex": {
       "daily": [
@@ -817,17 +817,17 @@
         },
         {
           "date": "2026-11-24",
-          "tokens": 572246230,
-          "input": 10149036,
-          "output": 623770,
-          "cache_read": 561203712,
+          "tokens": 683990110,
+          "input": 11936358,
+          "output": 743619,
+          "cache_read": 670963968,
           "cache_write": 0,
-          "reasoning": 269712,
-          "active_ms": 30473190
+          "reasoning": 346165,
+          "active_ms": 37561699
         }
       ],
-      "active_ms": 2200754695,
-      "sessions": 3683,
+      "active_ms": 2207843204,
+      "sessions": 3698,
       "max_concurrent_sessions": 12
     },
     "dsh": {
